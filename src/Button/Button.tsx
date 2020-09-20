@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import { theme } from '../styles/themes/themes';
 
 type ButtonProps = {
   /** 버튼 안의 내용 */
@@ -7,7 +8,7 @@ type ButtonProps = {
   /** 클릭했을 때 호출할 함수 */
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   /** 버튼의 생김새를 설정합니다. */
-  theme: 'primary' | 'secondary' | 'tertiary';
+  theme: 'primary' | 'secondary';
   /** 버튼의 크기를 설정합니다 */
   size: 'small' | 'medium' | 'big';
   /** 버튼을 비활성화 시킵니다. */
@@ -32,8 +33,7 @@ function Button({
     <button
       onClick={onClick}
       css={[style, themes[theme], sizes[size], { width }]}
-      disabled={disabled}
-    >
+      disabled={disabled}>
       {children}
     </button>
   );
@@ -44,10 +44,9 @@ Button.defaultProps = {
   size: 'medium',
 };
 
+const { primary, secondary } = theme;
+
 const style = css`
-  /* outline: none;
-  border: none;
-  box-sizing: border-box; */
   height: 2rem;
   font-size: 0.875rem;
   padding: 0 1rem;
@@ -70,42 +69,30 @@ const style = css`
 
 const themes = {
   primary: css`
-    background: #20c997;
-    color: white;
+    background: ${primary.button.base};
+    color: ${primary.button.font};
     &:hover:enabled {
-      background: #38d9a9;
+      background: ${primary.button.hover};
     }
-    &:active {
-      background: #12b886;
+    &:active:enabled {
+      background: ${primary.button.active};
     }
     &:disabled {
-      background: #aed9cc;
+      background: ${primary.button.disable};
     }
   `,
   secondary: css`
-    background: #e9ecef;
-    color: #343a40;
+    background: ${secondary.button.base};
+    color: ${secondary.button.font};
     &:hover:enabled {
-      background: #f1f3f5;
+      background: ${secondary.button.hover};
     }
-    &:active {
-      background: #dee2e6;
+    &:active:enabled {
+      background: ${secondary.button.active};
     }
     &:disabled {
-      color: #c6d3e1;
-    }
-  `,
-  tertiary: css`
-    background: none;
-    color: #20c997;
-    &:hover:enabled {
-      background: #e6fcf5;
-    }
-    &:active {
-      background: #c3fae8;
-    }
-    &:disabled {
-      color: #bcd9d0;
+      color: ${secondary.button.disable};
+      background: ${secondary.button.base};
     }
   `,
 };

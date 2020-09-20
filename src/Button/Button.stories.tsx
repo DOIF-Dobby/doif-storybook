@@ -13,11 +13,7 @@ export default {
 export const button = () => {
   const label = text('children', 'BUTTON');
   const size = select('size', ['small', 'medium', 'big'], 'medium');
-  const theme = select(
-    'theme',
-    ['primary', 'secondary', 'tertiary'],
-    'primary'
-  );
+  const theme = select('theme', ['primary', 'secondary'], 'primary');
   const disabled = boolean('disabled', false);
   const width = text('width', '');
 
@@ -27,8 +23,7 @@ export const button = () => {
       theme={theme}
       disabled={disabled}
       width={width}
-      onClick={action('onClick')}
-    >
+      onClick={action('onClick')}>
       {label}
     </Button>
   );
@@ -44,10 +39,6 @@ export const primaryButton = () => {
 
 export const secondaryButton = () => {
   return <Button theme="secondary">SECONDARY</Button>;
-};
-
-export const tertiaryButton = () => {
-  return <Button theme="tertiary">TERTIARY</Button>;
 };
 
 const buttonWrapper = css`
@@ -87,11 +78,6 @@ export const disabled = () => {
       <div>
         <Button disabled theme="secondary">
           SECONDARY
-        </Button>
-      </div>
-      <div>
-        <Button disabled theme="tertiary">
-          TERTIARY
         </Button>
       </div>
     </div>
