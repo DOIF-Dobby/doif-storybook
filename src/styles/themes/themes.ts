@@ -2,13 +2,14 @@ import basicTheme from './basicTheme';
 
 export type ThemeProps = {
   name: string;
-  primary: SubThemeProps;
-  secondary: SubThemeProps;
-  tertiary?: SubThemeProps;
+  button: ButtonThemeProps;
+  dialog: DialogProps;
 };
 
-export type SubThemeProps = {
-  button: ButtonProps;
+export type ButtonThemeProps = {
+  primary: ButtonProps;
+  secondary: ButtonProps;
+  tertiary?: ButtonProps;
 };
 
 export type ButtonProps = {
@@ -17,6 +18,12 @@ export type ButtonProps = {
   hover: string;
   active: string;
   disable: string;
+};
+
+export type DialogProps = {
+  base: string;
+  title: string;
+  description: string;
 };
 
 export const theme: ThemeProps = basicTheme;

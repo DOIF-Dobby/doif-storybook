@@ -15,6 +15,8 @@ type ButtonProps = {
   disabled?: boolean;
   /** 버튼의 너비를 임의로 설정합니다. */
   width?: string | number;
+  /** 버튼에서 아이콘만 보여줄 때 이 값을 `true`로 설정하세요. */
+  iconOnly?: boolean;
 };
 
 /**
@@ -26,14 +28,20 @@ function Button({
   size,
   disabled,
   width,
+  iconOnly,
   onClick,
 }: ButtonProps) {
   return (
     <button
       onClick={onClick}
-      css={[style, themes[theme], sizes[size], { width }]}
       disabled={disabled}
-    >
+      css={[
+        style,
+        themes[theme],
+        sizes[size],
+        { width },
+        iconOnly && [iconOnlyStyle, iconOnlySizes[size]],
+      ]}>
       {children}
     </button>
   );
@@ -44,7 +52,9 @@ Button.defaultProps = {
   size: 'medium',
 };
 
-const { primary, secondary } = theme;
+const {
+  button: { primary, secondary },
+} = theme;
 
 const style = css`
   height: 2rem;
@@ -73,45 +83,65 @@ const style = css`
   }
 `;
 
+const iconOnlyStyle = css`
+  padding: 0;
+  border-radius: 50%;
+  svg {
+    margin: 0;
+  }
+`;
+
+const iconOnlySizes = {
+  small: css`
+    width: 1.75rem;
+  `,
+  medium: css`
+    width: 2.5rem;
+  `,
+  big: css`
+    width: 3rem;
+  `,
+};
+
 const themes = {
   primary: css`
-    background: ${primary.button.base};
-    color: ${primary.button.font};
+    background: ${primary.base};
+    color: ${primary.font};
 
     svg {
       fill: white;
     }
 
     &:hover:enabled {
-      background: ${primary.button.hover};
+      background: ${primary.hover};
     }
     &:active:enabled {
-      background: ${primary.button.active};
+      background: ${primary.active};
     }
     &:disabled {
-      background: ${primary.button.disable};
+      background: ${primary.disable};
     }
   `,
   secondary: css`
-    background: ${secondary.button.base};
-    color: ${secondary.button.font};
+    background: ${secondary.base};
+    color: ${secondary.font};
 
     svg {
-      fill: ${secondary.button.font};
+      fill: ${secondary.font};
     }
 
     &:hover:enabled {
-      background: ${secondary.button.hover};
+      background: ${secondary.hover};
     }
     &:active:enabled {
-      background: ${secondary.button.active};
+      background: ${secondary.active};
     }
     &:disabled {
-      color: ${secondary.button.disable};
-      background: ${secondary.button.base};
+      color: ${secondary.disable};
+      background: ${secondary.base};
 
       svg {
-        fill: ${secondary.button.disable};
+        fill: ${secondary.disable};
       }
     }
   `,

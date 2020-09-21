@@ -25,8 +25,7 @@ export const button = () => {
       theme={theme}
       disabled={disabled}
       width={width}
-      onClick={action('onClick')}
-    >
+      onClick={action('onClick')}>
       {label}
     </Button>
   );
@@ -104,14 +103,38 @@ export const withIcon = () => {
   return (
     <div>
       <ButtonGroup>
-        <Button size="small">
+        <Button>
           <Icon icon="heart" /> LIKE
         </Button>
         <Button disabled>
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button size="big" disabled theme="secondary">
+        <Button theme="secondary">
           <Icon icon="heart" /> LIKE
+        </Button>
+        <Button disabled theme="secondary">
+          <Icon icon="heart" /> LIKE
+        </Button>
+      </ButtonGroup>
+    </div>
+  );
+};
+
+export const iconOnly = () => {
+  return (
+    <div>
+      <ButtonGroup>
+        <Button iconOnly>
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly disabled>
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly theme="secondary">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly theme="secondary" disabled>
+          <Icon icon="heart" />
         </Button>
       </ButtonGroup>
     </div>
