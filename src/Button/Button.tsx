@@ -19,7 +19,6 @@ type ButtonProps = {
 
 /**
  * `Button` 컴포넌트는 어떠한 작업을 트리거할 때 사용합니다.
- * @param param0
  */
 function Button({
   children,
@@ -33,7 +32,8 @@ function Button({
     <button
       onClick={onClick}
       css={[style, themes[theme], sizes[size], { width }]}
-      disabled={disabled}>
+      disabled={disabled}
+    >
       {children}
     </button>
   );
@@ -56,6 +56,12 @@ const style = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  svg {
+    width: 1em;
+    margin-right: 1em;
+  }
+
   &:hover:enabled {
     cursor: pointer;
   }
@@ -71,6 +77,11 @@ const themes = {
   primary: css`
     background: ${primary.button.base};
     color: ${primary.button.font};
+
+    svg {
+      fill: white;
+    }
+
     &:hover:enabled {
       background: ${primary.button.hover};
     }
@@ -84,6 +95,11 @@ const themes = {
   secondary: css`
     background: ${secondary.button.base};
     color: ${secondary.button.font};
+
+    svg {
+      fill: ${secondary.button.font};
+    }
+
     &:hover:enabled {
       background: ${secondary.button.hover};
     }
@@ -93,6 +109,10 @@ const themes = {
     &:disabled {
       color: ${secondary.button.disable};
       background: ${secondary.button.base};
+
+      svg {
+        fill: ${secondary.button.disable};
+      }
     }
   `,
 };

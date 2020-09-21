@@ -3,9 +3,11 @@ import { jsx, css } from '@emotion/core';
 import Button from './Button';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import ButtonGroup from '../ButtonGroup/ButtonGroup';
+import Icon from '../Icon/Icon';
 
 export default {
-  title: 'components|Button',
+  title: 'components/Button',
   component: Button,
   decorators: [withKnobs],
 };
@@ -23,7 +25,8 @@ export const button = () => {
       theme={theme}
       disabled={disabled}
       width={width}
-      onClick={action('onClick')}>
+      onClick={action('onClick')}
+    >
       {label}
     </Button>
   );
@@ -93,6 +96,24 @@ export const customSized = () => {
       <div>
         <Button width="100%">FULL WIDTH</Button>
       </div>
+    </div>
+  );
+};
+
+export const withIcon = () => {
+  return (
+    <div>
+      <ButtonGroup>
+        <Button size="small">
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button disabled>
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button size="big" disabled theme="secondary">
+          <Icon icon="heart" /> LIKE
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };
