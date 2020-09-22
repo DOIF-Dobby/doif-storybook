@@ -60,7 +60,7 @@ var basicTheme = {
 var theme = basicTheme;
 
 function _templateObject10() {
-  var data = _taggedTemplateLiteral(["\n    height: 3rem;\n    font-size: 1.125rem;\n    padding: 0 1.5rem;\n  "]);
+  var data = _taggedTemplateLiteral(["\n    height: 3.5rem;\n    font-size: 1.35rem;\n    padding: 0 1.5rem;\n  "]);
 
   _templateObject10 = function _templateObject10() {
     return data;
@@ -70,7 +70,7 @@ function _templateObject10() {
 }
 
 function _templateObject9() {
-  var data = _taggedTemplateLiteral(["\n    height: 2.5rem;\n    font-size: 1rem;\n    padding: 0 1rem;\n  "]);
+  var data = _taggedTemplateLiteral(["\n    height: 2.75rem;\n    font-size: 1rem;\n    padding: 0 1rem;\n  "]);
 
   _templateObject9 = function _templateObject9() {
     return data;
@@ -80,7 +80,7 @@ function _templateObject9() {
 }
 
 function _templateObject8() {
-  var data = _taggedTemplateLiteral(["\n    height: 1.75rem;\n    font-size: 0.75rem;\n    padding: 0 0.875rem;\n  "]);
+  var data = _taggedTemplateLiteral(["\n    height: 2rem;\n    font-size: 0.8rem;\n    padding: 0 0.875rem;\n  "]);
 
   _templateObject8 = function _templateObject8() {
     return data;
@@ -150,7 +150,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  height: 2rem;\n  font-size: 0.875rem;\n  padding: 0 1rem;\n  border-radius: 0.25rem;\n  line-height: 1;\n  font-weight: 600;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n\n  svg {\n    width: 1em;\n    margin-right: 1em;\n  }\n\n  &:hover:enabled {\n    cursor: pointer;\n  }\n  &:focus {\n    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);\n  }\n  &:disabled {\n    cursor: not-allowed;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: 0.875rem;\n  padding: 0 1rem;\n  border-radius: 0.25rem;\n  line-height: 1;\n  font-weight: 600;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n\n  svg {\n    margin-right: 1rem;\n  }\n\n  &:hover:enabled {\n    cursor: pointer;\n  }\n  &:focus {\n    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);\n  }\n  &:disabled {\n    cursor: not-allowed;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;

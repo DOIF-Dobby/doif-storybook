@@ -57,7 +57,6 @@ const {
 } = theme;
 
 const style = css`
-  height: 2rem;
   font-size: 0.875rem;
   padding: 0 1rem;
   border-radius: 0.25rem;
@@ -68,8 +67,7 @@ const style = css`
   justify-content: center;
 
   svg {
-    width: 1em;
-    margin-right: 1em;
+    margin-right: 1rem;
   }
 
   &:hover:enabled {
@@ -149,18 +147,18 @@ const themes = {
 
 const sizes = {
   small: css`
-    height: 1.75rem;
-    font-size: 0.75rem;
+    height: 2rem;
+    font-size: 0.8rem;
     padding: 0 0.875rem;
   `,
   medium: css`
-    height: 2.5rem;
+    height: 2.75rem;
     font-size: 1rem;
     padding: 0 1rem;
   `,
   big: css`
-    height: 3rem;
-    font-size: 1.125rem;
+    height: 3.5rem;
+    font-size: 1.35rem;
     padding: 0 1.5rem;
   `,
 };
