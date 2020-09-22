@@ -31,7 +31,7 @@ export type DialogProps = {
 /**
  * `Dialog` 컴포넌트는 메시지를 띄울 때 사용합니다.
  */
-const Dialog = ({
+function Dialog({
   visible,
   title,
   description,
@@ -42,7 +42,7 @@ const Dialog = ({
   children,
   onCancel,
   onConfirm,
-}: DialogProps) => {
+}: DialogProps) {
   if (!visible) {
     return null;
   }
@@ -69,7 +69,7 @@ const Dialog = ({
       </div>
     </Fragment>
   );
-};
+}
 
 Dialog.defaultProps = {
   cancelText: '취소',
