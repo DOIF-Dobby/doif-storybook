@@ -65,6 +65,7 @@ const style = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  letter-spacing: 0.5px;
 
   svg {
     margin-right: 1rem;
@@ -81,6 +82,37 @@ const style = css`
   }
 `;
 
+const themes = {
+  primary: css`
+    background: ${primary.base};
+    color: ${primary.font};
+
+    &:hover:enabled {
+      background: ${primary.hover};
+    }
+    &:active:enabled {
+      background: ${primary.active};
+    }
+    &:disabled {
+      opacity: 0.4;
+    }
+  `,
+  secondary: css`
+    background: ${secondary.base};
+    color: ${secondary.font};
+
+    &:hover:enabled {
+      background: ${secondary.hover};
+    }
+    &:active:enabled {
+      background: ${secondary.active};
+    }
+    &:disabled {
+      opacity: 0.4;
+    }
+  `,
+};
+
 const iconOnlyStyle = css`
   padding: 0;
   border-radius: 50%;
@@ -94,72 +126,40 @@ const iconOnlySizes = {
     width: 1.75rem;
   `,
   medium: css`
-    width: 2.5rem;
+    width: 2.25rem;
   `,
   big: css`
-    width: 3rem;
-  `,
-};
-
-const themes = {
-  primary: css`
-    background: ${primary.base};
-    color: ${primary.font};
-
-    svg {
-      fill: white;
-    }
-
-    &:hover:enabled {
-      background: ${primary.hover};
-    }
-    &:active:enabled {
-      background: ${primary.active};
-    }
-    &:disabled {
-      background: ${primary.disable};
-    }
-  `,
-  secondary: css`
-    background: ${secondary.base};
-    color: ${secondary.font};
-
-    svg {
-      fill: ${secondary.font};
-    }
-
-    &:hover:enabled {
-      background: ${secondary.hover};
-    }
-    &:active:enabled {
-      background: ${secondary.active};
-    }
-    &:disabled {
-      color: ${secondary.disable};
-      background: ${secondary.base};
-
-      svg {
-        fill: ${secondary.disable};
-      }
-    }
+    width: 2.75rem;
   `,
 };
 
 const sizes = {
   small: css`
-    height: 2rem;
-    font-size: 0.8rem;
-    padding: 0 0.875rem;
+    height: 1.75rem;
+    font-size: 0.75rem;
+    padding: 0 1rem;
+
+    svg {
+      width: 1rem;
+    }
   `,
   medium: css`
-    height: 2.75rem;
+    height: 2.25rem;
     font-size: 1rem;
     padding: 0 1rem;
+
+    svg {
+      width: 1.2rem;
+    }
   `,
   big: css`
-    height: 3.5rem;
-    font-size: 1.35rem;
-    padding: 0 1.5rem;
+    height: 2.75rem;
+    font-size: 1.25rem;
+    padding: 0 1.2rem;
+
+    svg {
+      width: 1.4rem;
+    }
   `,
 };
 

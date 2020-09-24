@@ -103,6 +103,21 @@ export const withIcon = () => {
   return (
     <div>
       <ButtonGroup>
+        <Button size="small">
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button disabled size="small">
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button theme="secondary" size="small">
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button disabled theme="secondary" size="small">
+          <Icon icon="heart" /> LIKE
+        </Button>
+      </ButtonGroup>
+      <br />
+      <ButtonGroup>
         <Button>
           <Icon icon="heart" /> LIKE
         </Button>
@@ -116,6 +131,36 @@ export const withIcon = () => {
           <Icon icon="heart" /> LIKE
         </Button>
       </ButtonGroup>
+      <br />
+      <ButtonGroup>
+        <Button size="big">
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button disabled size="big">
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button theme="secondary" size="big">
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button disabled theme="secondary" size="big">
+          <Icon icon="heart" /> LIKE
+        </Button>
+      </ButtonGroup>
+      <br />
+      <ButtonGroup>
+        <Button>
+          <Icon icon="heart" color="#ff6b6b" /> LIKE
+        </Button>
+        <Button disabled>
+          <Icon icon="heart" color="#ff6b6b" /> LIKE
+        </Button>
+        <Button theme="secondary">
+          <Icon icon="heart" color="#ff6b6b" /> LIKE
+        </Button>
+        <Button disabled theme="secondary">
+          <Icon icon="heart" color="#ff6b6b" /> LIKE
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };
@@ -123,6 +168,21 @@ export const withIcon = () => {
 export const iconOnly = () => {
   return (
     <div>
+      <ButtonGroup>
+        <Button iconOnly size="small">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly disabled size="small">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly theme="secondary" size="small">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly theme="secondary" disabled size="small">
+          <Icon icon="heart" />
+        </Button>
+      </ButtonGroup>
+      <br />
       <ButtonGroup>
         <Button iconOnly>
           <Icon icon="heart" />
@@ -134,6 +194,21 @@ export const iconOnly = () => {
           <Icon icon="heart" />
         </Button>
         <Button iconOnly theme="secondary" disabled>
+          <Icon icon="heart" />
+        </Button>
+      </ButtonGroup>
+      <br />
+      <ButtonGroup>
+        <Button iconOnly size="big">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly disabled size="big">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly theme="secondary" size="big">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly theme="secondary" disabled size="big">
           <Icon icon="heart" />
         </Button>
       </ButtonGroup>
