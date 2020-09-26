@@ -16,6 +16,7 @@ export default {
 export const button = () => {
   const label = text('children', 'BUTTON');
   const size = select('size', ['small', 'medium', 'big'], 'medium');
+  const variant = select('variant', ['contain', 'outline', 'text'], 'contain');
   const color = select(
     'color',
     [
@@ -44,6 +45,7 @@ export const button = () => {
       color={color}
       disabled={disabled}
       width={width}
+      variant={variant}
       onClick={action('onClick')}>
       {label}
     </Button>
@@ -61,9 +63,14 @@ export const primaryButton = () => {
 const buttonWrapper = css`
   .description {
     margin-bottom: 0.5rem;
+    font-weight: 600;
   }
   & > div + div {
     margin-top: 2rem;
+  }
+
+  & > div > button {
+    margin-right: 1rem;
   }
 `;
 
@@ -73,14 +80,32 @@ export const sizes = () => {
       <div>
         <div className="description">Small</div>
         <Button size="small">BUTTON</Button>
+        <Button size="small" variant="outline">
+          BUTTON
+        </Button>
+        <Button size="small" variant="text">
+          BUTTON
+        </Button>
       </div>
       <div>
         <div className="description">Medium</div>
         <Button size="medium">BUTTON</Button>
+        <Button size="medium" variant="outline">
+          BUTTON
+        </Button>
+        <Button size="medium" variant="text">
+          BUTTON
+        </Button>
       </div>
       <div>
         <div className="description">Big</div>
         <Button size="big">BUTTON</Button>
+        <Button size="big" variant="outline">
+          BUTTON
+        </Button>
+        <Button size="big" variant="text">
+          BUTTON
+        </Button>
       </div>
     </div>
   );
@@ -122,10 +147,10 @@ export const withIcon = () => {
         <Button disabled size="small">
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button size="small">
+        <Button variant="text" size="small">
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button disabled size="small">
+        <Button variant="text" disabled size="small">
           <Icon icon="heart" /> LIKE
         </Button>
       </ButtonGroup>
@@ -137,10 +162,10 @@ export const withIcon = () => {
         <Button disabled>
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button>
+        <Button variant="text">
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button disabled>
+        <Button variant="text" disabled>
           <Icon icon="heart" /> LIKE
         </Button>
       </ButtonGroup>
@@ -152,10 +177,10 @@ export const withIcon = () => {
         <Button disabled size="big">
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button size="big">
+        <Button variant="text" size="big">
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button disabled size="big">
+        <Button variant="text" disabled size="big">
           <Icon icon="heart" /> LIKE
         </Button>
       </ButtonGroup>
@@ -167,11 +192,26 @@ export const withIcon = () => {
         <Button disabled>
           <Icon icon="heart" color="#ff6b6b" /> LIKE
         </Button>
-        <Button>
+        <Button variant="text">
           <Icon icon="heart" color="#ff6b6b" /> LIKE
         </Button>
-        <Button disabled>
+        <Button variant="text" disabled>
           <Icon icon="heart" color="#ff6b6b" /> LIKE
+        </Button>
+      </ButtonGroup>
+      <br />
+      <ButtonGroup>
+        <Button color={Color.RED}>
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button color={Color.RED} disabled>
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button variant="text" color={Color.RED}>
+          <Icon icon="heart" /> LIKE
+        </Button>
+        <Button variant="text" color={Color.RED} disabled>
+          <Icon icon="heart" /> LIKE
         </Button>
       </ButtonGroup>
     </div>
@@ -247,6 +287,18 @@ export const colorButton = () => {
             <ButtonGroup>
               <Button color={color}>Button</Button>
               <Button color={color} disabled>
+                Button
+              </Button>
+              <Button color={color} variant="outline">
+                Button
+              </Button>
+              <Button color={color} variant="outline" disabled>
+                Button
+              </Button>
+              <Button color={color} variant="text">
+                Button
+              </Button>
+              <Button color={color} variant="text" disabled>
                 Button
               </Button>
             </ButtonGroup>

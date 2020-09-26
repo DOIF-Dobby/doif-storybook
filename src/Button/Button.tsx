@@ -10,7 +10,7 @@ type ButtonProps = {
   children: React.ReactNode;
   /** 버튼의 색을 설정합니다. */
   color: Color;
-  /**  */
+  /** 버튼의 모양을 설정합니다. */
   variant: 'contain' | 'outline' | 'text';
   /** 버튼의 크기를 설정합니다 */
   size: 'small' | 'medium' | 'big';
@@ -27,6 +27,7 @@ type ButtonProps = {
 type ColorProps = {
   color: Color;
   colorNumber: number;
+  variant: 'contain' | 'outline' | 'text';
 };
 
 /**
@@ -47,6 +48,7 @@ function Button({
       onClick={onClick}
       disabled={disabled}
       color={color}
+      variant={variant}
       colorNumber={color === Color.GRAY ? 7 : 5}
       css={[
         style,
@@ -70,7 +72,7 @@ const style = css`
   padding: 0 1rem;
   border-radius: 0.25rem;
   line-height: 1;
-  font-weight: 500;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -80,7 +82,7 @@ const style = css`
     cursor: pointer;
   }
   &:focus {
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   }
   &:disabled {
     cursor: not-allowed;
@@ -88,21 +90,55 @@ const style = css`
 `;
 
 const StyledButton = styled.button`
-  background-color: ${(props: ColorProps) =>
-    palette[props.color][props.colorNumber]};
-  color: white;
-
-  &:hover:enabled {
-    background-color: ${(props: ColorProps) =>
-      palette[props.color][props.colorNumber + 1]};
-  }
-  &:active:enabled {
-    background-color: ${(props: ColorProps) =>
-      palette[props.color][props.colorNumber + 2]};
-  }
-  &:disabled {
-    opacity: 0.4;
-  }
+  ${(props: ColorProps) => {
+    switch (props.variant) {
+      case 'contain':
+        return `
+          background-color: ${palette[props.color][props.colorNumber]};
+          color: white;
+          border: none;
+          &:hover:enabled {
+            background-color: ${palette[props.color][props.colorNumber + 1]}};
+          }
+          &:active:enabled {
+            background-color: ${palette[props.color][props.colorNumber + 2]}};
+          }
+          &:disabled {
+            opacity: 0.4;
+          }
+        `;
+      case 'outline':
+        return `
+          background-color: transparent;
+          color: ${palette[props.color][props.colorNumber]};
+          border: 1px solid ${palette[props.color][props.colorNumber]};
+          &:hover:enabled {
+            background-color: ${palette[props.color][1]}};
+          }
+          &:active:enabled {
+            background-color: ${palette[props.color][2]}};
+          }
+          &:disabled {
+            opacity: 0.4;
+          }
+        `;
+      case 'text':
+        return `
+          background-color: white;
+          color: ${palette[props.color][props.colorNumber]};
+          border: none;
+          &:hover:enabled {
+            background-color: ${palette[props.color][1]}};
+          }
+          &:active:enabled {
+            background-color: ${palette[props.color][2]}};
+          }
+          &:disabled {
+            opacity: 0.4;
+          }
+        `;
+    }
+  }}
 `;
 
 const iconOnlyStyle = css`

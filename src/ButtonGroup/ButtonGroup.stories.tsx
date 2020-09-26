@@ -2,6 +2,7 @@ import React from 'react';
 import { withKnobs, text, radios, boolean } from '@storybook/addon-knobs';
 import ButtonGroup from './ButtonGroup';
 import Button from '../Button/Button';
+import Color from '../styles/colors/Color';
 
 export default {
   title: 'components/ButtonGroup',
@@ -20,7 +21,7 @@ export const buttonGroup = () => {
 
   return (
     <ButtonGroup direction={direction} rightAlign={rightAlign} gap={gap}>
-      <Button>취소</Button>
+      <Button variant="text">취소</Button>
       <Button>확인</Button>
     </ButtonGroup>
   );
@@ -33,8 +34,8 @@ buttonGroup.story = {
 export const rightAlign = () => {
   return (
     <ButtonGroup rightAlign>
-      <Button>취소</Button>
-      <Button>확인</Button>
+      <Button>조회</Button>
+      <Button variant="outline">다운로드</Button>
     </ButtonGroup>
   );
 };
@@ -51,7 +52,7 @@ export const column = () => {
 export const customGap = () => {
   return (
     <ButtonGroup gap="1rem">
-      <Button>취소</Button>
+      <Button color={Color.TEAL}>취소</Button>
       <Button>확인</Button>
     </ButtonGroup>
   );

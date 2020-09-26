@@ -59,7 +59,7 @@ function Dialog({
           {!hideButtons && (
             <ButtonGroup css={{ marginTop: '3rem' }} rightAlign>
               {cancellable && (
-                <Button onClick={onCancel} color={Color.TEAL}>
+                <Button onClick={onCancel} variant="text">
                   {cancelText}
                 </Button>
               )}
