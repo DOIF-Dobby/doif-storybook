@@ -1,14 +1,17 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { theme } from '../styles/themes/themes';
+import styled from '@emotion/styled';
+import { Color } from '../styles/colors/Color';
+
+import palette from '../styles/colors/palette';
 
 type ButtonProps = {
   /** 버튼 안의 내용 */
   children: React.ReactNode;
-  /** 클릭했을 때 호출할 함수 */
-  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
-  /** 버튼의 생김새를 설정합니다. */
-  theme: 'primary' | 'secondary';
+  /** 버튼의 색을 설정합니다. */
+  color: Color;
+  /**  */
+  variant: 'contain' | 'outline' | 'text';
   /** 버튼의 크기를 설정합니다 */
   size: 'small' | 'medium' | 'big';
   /** 버튼을 비활성화 시킵니다. */
@@ -17,6 +20,13 @@ type ButtonProps = {
   width?: string | number;
   /** 버튼에서 아이콘만 보여줄 때 이 값을 `true`로 설정하세요. */
   iconOnly?: boolean;
+  /** 클릭했을 때 호출할 함수 */
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+type ColorProps = {
+  color: Color;
+  colorNumber: number;
 };
 
 /**
@@ -24,7 +34,8 @@ type ButtonProps = {
  */
 function Button({
   children,
-  theme,
+  color,
+  variant,
   size,
   disabled,
   width,
@@ -32,36 +43,34 @@ function Button({
   onClick,
 }: ButtonProps) {
   return (
-    <button
+    <StyledButton
       onClick={onClick}
       disabled={disabled}
+      color={color}
+      colorNumber={color === Color.GRAY ? 7 : 5}
       css={[
         style,
-        themes[theme],
         sizes[size],
         { width },
         iconOnly && [iconOnlyStyle, iconOnlySizes[size]],
       ]}>
       {children}
-    </button>
+    </StyledButton>
   );
 }
 
 Button.defaultProps = {
-  theme: 'primary',
+  color: 'violet',
   size: 'medium',
+  variant: 'contain',
 };
-
-const {
-  button: { primary, secondary },
-} = theme;
 
 const style = css`
   font-size: 0.875rem;
   padding: 0 1rem;
   border-radius: 0.25rem;
   line-height: 1;
-  font-weight: 600;
+  font-weight: 500;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -82,36 +91,23 @@ const style = css`
   }
 `;
 
-const themes = {
-  primary: css`
-    background: ${primary.base};
-    color: ${primary.font};
+const StyledButton = styled.button`
+  background-color: ${(props: ColorProps) =>
+    palette[props.color][props.colorNumber]};
+  color: white;
 
-    &:hover:enabled {
-      background: ${primary.hover};
-    }
-    &:active:enabled {
-      background: ${primary.active};
-    }
-    &:disabled {
-      opacity: 0.4;
-    }
-  `,
-  secondary: css`
-    background: ${secondary.base};
-    color: ${secondary.font};
-
-    &:hover:enabled {
-      background: ${secondary.hover};
-    }
-    &:active:enabled {
-      background: ${secondary.active};
-    }
-    &:disabled {
-      opacity: 0.4;
-    }
-  `,
-};
+  &:hover:enabled {
+    background-color: ${(props: ColorProps) =>
+      palette[props.color][props.colorNumber + 1]};
+  }
+  &:active:enabled {
+    background-color: ${(props: ColorProps) =>
+      palette[props.color][props.colorNumber + 2]};
+  }
+  &:disabled {
+    opacity: 0.4;
+  }
+`;
 
 const iconOnlyStyle = css`
   padding: 0;

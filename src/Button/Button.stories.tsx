@@ -5,6 +5,7 @@ import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Icon from '../Icon/Icon';
+import { Color } from '../styles/colors/Color';
 
 export default {
   title: 'components/Button',
@@ -15,14 +16,32 @@ export default {
 export const button = () => {
   const label = text('children', 'BUTTON');
   const size = select('size', ['small', 'medium', 'big'], 'medium');
-  const theme = select('theme', ['primary', 'secondary'], 'primary');
+  const color = select(
+    'color',
+    [
+      Color.GRAY,
+      Color.PINK,
+      Color.VIOLET,
+      Color.BLUE,
+      Color.TEAL,
+      Color.LIME,
+      Color.ORANGE,
+      Color.RED,
+      Color.GRAPE,
+      Color.INDIGO,
+      Color.CYAN,
+      Color.GREEN,
+      Color.YELLOW,
+    ],
+    Color.VIOLET
+  );
   const disabled = boolean('disabled', false);
   const width = text('width', '');
 
   return (
     <Button
       size={size}
-      theme={theme}
+      color={color}
       disabled={disabled}
       width={width}
       onClick={action('onClick')}>
@@ -37,10 +56,6 @@ button.story = {
 
 export const primaryButton = () => {
   return <Button>PRIMARY</Button>;
-};
-
-export const secondaryButton = () => {
-  return <Button theme="secondary">SECONDARY</Button>;
 };
 
 const buttonWrapper = css`
@@ -78,9 +93,7 @@ export const disabled = () => {
         <Button disabled>PRIMARY</Button>
       </div>
       <div>
-        <Button disabled theme="secondary">
-          SECONDARY
-        </Button>
+        <Button disabled>SECONDARY</Button>
       </div>
     </div>
   );
@@ -109,10 +122,10 @@ export const withIcon = () => {
         <Button disabled size="small">
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button theme="secondary" size="small">
+        <Button size="small">
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button disabled theme="secondary" size="small">
+        <Button disabled size="small">
           <Icon icon="heart" /> LIKE
         </Button>
       </ButtonGroup>
@@ -124,10 +137,10 @@ export const withIcon = () => {
         <Button disabled>
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button theme="secondary">
+        <Button>
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button disabled theme="secondary">
+        <Button disabled>
           <Icon icon="heart" /> LIKE
         </Button>
       </ButtonGroup>
@@ -139,10 +152,10 @@ export const withIcon = () => {
         <Button disabled size="big">
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button theme="secondary" size="big">
+        <Button size="big">
           <Icon icon="heart" /> LIKE
         </Button>
-        <Button disabled theme="secondary" size="big">
+        <Button disabled size="big">
           <Icon icon="heart" /> LIKE
         </Button>
       </ButtonGroup>
@@ -154,10 +167,10 @@ export const withIcon = () => {
         <Button disabled>
           <Icon icon="heart" color="#ff6b6b" /> LIKE
         </Button>
-        <Button theme="secondary">
+        <Button>
           <Icon icon="heart" color="#ff6b6b" /> LIKE
         </Button>
-        <Button disabled theme="secondary">
+        <Button disabled>
           <Icon icon="heart" color="#ff6b6b" /> LIKE
         </Button>
       </ButtonGroup>
@@ -175,10 +188,10 @@ export const iconOnly = () => {
         <Button iconOnly disabled size="small">
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly theme="secondary" size="small">
+        <Button iconOnly size="small">
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly theme="secondary" disabled size="small">
+        <Button iconOnly disabled size="small">
           <Icon icon="heart" />
         </Button>
       </ButtonGroup>
@@ -190,10 +203,10 @@ export const iconOnly = () => {
         <Button iconOnly disabled>
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly theme="secondary">
+        <Button iconOnly>
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly theme="secondary" disabled>
+        <Button iconOnly disabled>
           <Icon icon="heart" />
         </Button>
       </ButtonGroup>
@@ -205,13 +218,41 @@ export const iconOnly = () => {
         <Button iconOnly disabled size="big">
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly theme="secondary" size="big">
+        <Button iconOnly size="big">
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly theme="secondary" disabled size="big">
+        <Button iconOnly disabled size="big">
           <Icon icon="heart" />
         </Button>
       </ButtonGroup>
+    </div>
+  );
+};
+
+const colorsArray: Array<Color> = [];
+
+for (const value in Color) {
+  colorsArray.push(Color[value]);
+}
+
+export const colorButton = () => {
+  return (
+    <div>
+      {colorsArray &&
+        colorsArray.map((color) => (
+          <div>
+            <div css={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>
+              {color}
+            </div>
+            <ButtonGroup>
+              <Button color={color}>Button</Button>
+              <Button color={color} disabled>
+                Button
+              </Button>
+            </ButtonGroup>
+            <br />
+          </div>
+        ))}
     </div>
   );
 };

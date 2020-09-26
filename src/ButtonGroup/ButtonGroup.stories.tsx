@@ -20,7 +20,7 @@ export const buttonGroup = () => {
 
   return (
     <ButtonGroup direction={direction} rightAlign={rightAlign} gap={gap}>
-      <Button theme="secondary">취소</Button>
+      <Button>취소</Button>
       <Button>확인</Button>
     </ButtonGroup>
   );
@@ -33,7 +33,7 @@ buttonGroup.story = {
 export const rightAlign = () => {
   return (
     <ButtonGroup rightAlign>
-      <Button theme="secondary">취소</Button>
+      <Button>취소</Button>
       <Button>확인</Button>
     </ButtonGroup>
   );
@@ -51,7 +51,7 @@ export const column = () => {
 export const customGap = () => {
   return (
     <ButtonGroup gap="1rem">
-      <Button theme="secondary">취소</Button>
+      <Button>취소</Button>
       <Button>확인</Button>
     </ButtonGroup>
   );
