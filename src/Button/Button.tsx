@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { Color } from '../styles/colors/Color';
+import Color from '../styles/colors/Color';
 
 import palette from '../styles/colors/palette';
 
@@ -76,10 +76,6 @@ const style = css`
   justify-content: center;
   letter-spacing: 0.5px;
 
-  svg {
-    margin-right: 1rem;
-  }
-
   &:hover:enabled {
     cursor: pointer;
   }
@@ -136,7 +132,8 @@ const sizes = {
     padding: 0 1rem;
 
     svg {
-      width: 1rem;
+      width: 0.9rem;
+      margin-right: 0.5rem;
     }
   `,
   medium: css`
@@ -146,6 +143,7 @@ const sizes = {
 
     svg {
       width: 1.2rem;
+      margin-right: 0.75rem;
     }
   `,
   big: css`
@@ -155,6 +153,7 @@ const sizes = {
 
     svg {
       width: 1.4rem;
+      margin-right: 1rem;
     }
   `,
 };

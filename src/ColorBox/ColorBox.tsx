@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { Color } from '../styles/colors/Color';
+import Color from '../styles/colors/Color';
 import palette from '../styles/colors/palette';
 
 type ColorNumberType = {

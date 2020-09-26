@@ -4,7 +4,7 @@ import { css, jsx } from '@emotion/core';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Button from '../Button/Button';
 import palette from '../styles/colors/palette';
-import { Color } from '../styles/colors/Color';
+import Color from '../styles/colors/Color';
 
 export type DialogProps = {
   /** `true`: 화면에 나타남, `false`: 화면에서 사라짐  */

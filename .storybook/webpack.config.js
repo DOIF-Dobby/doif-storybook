@@ -25,5 +25,23 @@ module.exports = ({ config, mode }) => {
     ],
   });
   config.resolve.extensions.push('.ts', '.tsx');
+
+  config.module.rules.push({
+    test: /(icons|images)\/.*?.svg$/,
+    use: [
+      {
+        loader: '@svgr/webpack',
+        options: {
+          svgoConfig: {
+            plugins: {
+              removeViewBox: false,
+            },
+          },
+        },
+      },
+      'file-loader',
+    ],
+  });
+
   return config;
 };

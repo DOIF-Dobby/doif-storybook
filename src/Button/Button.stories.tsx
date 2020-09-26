@@ -5,7 +5,7 @@ import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Icon from '../Icon/Icon';
-import { Color } from '../styles/colors/Color';
+import Color from '../styles/colors/Color';
 
 export default {
   title: 'components/Button',
@@ -239,8 +239,8 @@ export const colorButton = () => {
   return (
     <div>
       {colorsArray &&
-        colorsArray.map((color) => (
-          <div>
+        colorsArray.map((color, i) => (
+          <div key={i}>
             <div css={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>
               {color}
             </div>

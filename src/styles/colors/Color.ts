@@ -1,4 +1,4 @@
-export enum Color {
+enum Color {
   GRAY = 'gray',
   PINK = 'pink',
   VIOLET = 'violet',
@@ -13,3 +13,5 @@ export enum Color {
   GREEN = 'green',
   YELLOW = 'yellow',
 }
+
+export default Color;

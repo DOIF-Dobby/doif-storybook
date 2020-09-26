@@ -8,7 +8,7 @@ import {
   select,
   radios,
 } from '@storybook/addon-knobs';
-import { Color } from '../styles/colors/Color';
+import Color from '../styles/colors/Color';
 
 export default {
   title: 'components/Color',
