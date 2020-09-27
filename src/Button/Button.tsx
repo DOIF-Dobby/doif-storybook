@@ -49,7 +49,7 @@ function Button({
   return (
     <StyledButton
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || isLoading}
       color={color}
       variant={variant}
       colorNumber={color === Color.GRAY ? 7 : 5}
@@ -93,6 +93,11 @@ const style = css`
 `;
 
 const StyledButton = styled.button`
+  span.contents-style {
+    display: flex;
+    align-items: center;
+  }
+
   ${(props: StyledButtonProps) => {
     switch (props.variant) {
       case 'contain':

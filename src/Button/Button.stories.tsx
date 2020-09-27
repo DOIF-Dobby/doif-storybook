@@ -6,6 +6,7 @@ import { action } from '@storybook/addon-actions';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Icon from '../Icon/Icon';
 import Color from '../styles/colors/Color';
+import { useEffect, useState } from 'react';
 
 export default {
   title: 'components/Button',
@@ -136,6 +137,38 @@ export const customSized = () => {
         <Button width="100%">FULL WIDTH</Button>
       </div>
     </div>
+  );
+};
+
+export const loadingButton = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [isLoading]);
+
+  const onClick = () => {
+    setIsLoading(true);
+  };
+
+  return (
+    <ButtonGroup>
+      <Button isLoading={isLoading} onClick={onClick}>
+        Button
+      </Button>
+      <Button isLoading={isLoading} onClick={onClick}>
+        <Icon icon="heart" /> LIKE
+      </Button>
+      <Button isLoading={isLoading} iconOnly onClick={onClick}>
+        <Icon icon="heart" />
+      </Button>
+    </ButtonGroup>
   );
 };
 
