@@ -4,7 +4,7 @@ import { css, jsx } from '@emotion/core';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Button from '../Button/Button';
 import palette from '../styles/colors/palette';
-import Color from '../styles/colors/Color';
+import DarkLayer from '../DarkLayer/DarkLayer';
 
 export type DialogProps = {
   /** `true`: 화면에 나타남, `false`: 화면에서 사라짐  */
@@ -50,7 +50,8 @@ function Dialog({
 
   return (
     <Fragment>
-      <div css={[fullscreen, darkLayer]}></div>
+      {/* <div css={[fullscreen, darkLayer]}></div> */}
+      <DarkLayer />
       <div css={[fullscreen, whiteBoxWrapper]}>
         <div css={whiteBox}>
           {title && <h3>{title}</h3>}

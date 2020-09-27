@@ -1,4 +1,6 @@
 enum Color {
+  WHITE = 'white',
+  BLACK = 'black',
   GRAY = 'gray',
   PINK = 'pink',
   VIOLET = 'violet',

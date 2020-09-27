@@ -20,13 +20,13 @@ type ButtonProps = {
   width?: string | number;
   /** 버튼에서 아이콘만 보여줄 때 이 값을 `true`로 설정하세요. */
   iconOnly?: boolean;
-  /** 로딩 상태, `isLoading`이 `true`면 클릭이 블가능하다. */
+  /** 로딩 상태, `isLoading`이 `true`면 클릭이 블가능합니다. */
   isLoading?: boolean;
   /** 클릭했을 때 호출할 함수 */
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-type ColorProps = {
+type StyledButtonProps = {
   color: Color;
   colorNumber: number;
   variant: 'contain' | 'outline' | 'text';
@@ -65,7 +65,7 @@ function Button({
 }
 
 Button.defaultProps = {
-  color: 'violet',
+  color: Color.VIOLET,
   size: 'medium',
   variant: 'contain',
 };
@@ -93,7 +93,7 @@ const style = css`
 `;
 
 const StyledButton = styled.button`
-  ${(props: ColorProps) => {
+  ${(props: StyledButtonProps) => {
     switch (props.variant) {
       case 'contain':
         return `

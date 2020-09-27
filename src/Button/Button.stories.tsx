@@ -20,6 +20,8 @@ export const button = () => {
   const color = select(
     'color',
     [
+      Color.WHITE,
+      Color.BLACK,
       Color.GRAY,
       Color.PINK,
       Color.VIOLET,
