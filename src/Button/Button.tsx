@@ -20,6 +20,8 @@ type ButtonProps = {
   width?: string | number;
   /** 버튼에서 아이콘만 보여줄 때 이 값을 `true`로 설정하세요. */
   iconOnly?: boolean;
+  /** 로딩 상태, `isLoading`이 `true`면 클릭이 블가능하다. */
+  isLoading?: boolean;
   /** 클릭했을 때 호출할 함수 */
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 };
@@ -41,6 +43,7 @@ function Button({
   disabled,
   width,
   iconOnly,
+  isLoading,
   onClick,
 }: ButtonProps) {
   return (
@@ -56,7 +59,7 @@ function Button({
         { width },
         iconOnly && [iconOnlyStyle, iconOnlySizes[size]],
       ]}>
-      {children}
+      <span className="contents-style">{children}</span>
     </StyledButton>
   );
 }
@@ -82,7 +85,7 @@ const style = css`
     cursor: pointer;
   }
   &:focus {
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
   }
   &:disabled {
     cursor: not-allowed;
@@ -99,12 +102,22 @@ const StyledButton = styled.button`
           border: none;
           &:hover:enabled {
             background-color: ${palette[props.color][props.colorNumber + 1]}};
+            transition: all 0.15s;
           }
           &:active:enabled {
             background-color: ${palette[props.color][props.colorNumber + 2]}};
           }
           &:disabled {
             opacity: 0.4;
+          }
+          &:active {
+            & > span.contents-style {
+              text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+
+              & > svg {
+                // stroke: black;
+              }
+            }
           }
         `;
       case 'outline':
@@ -113,10 +126,11 @@ const StyledButton = styled.button`
           color: ${palette[props.color][props.colorNumber]};
           border: 1px solid ${palette[props.color][props.colorNumber]};
           &:hover:enabled {
-            background-color: ${palette[props.color][1]}};
+            background-color: ${palette[props.color][0]}};
+            transition: all 0.15s;
           }
           &:active:enabled {
-            background-color: ${palette[props.color][2]}};
+            background-color: ${palette[props.color][1]}};
           }
           &:disabled {
             opacity: 0.4;
@@ -128,10 +142,11 @@ const StyledButton = styled.button`
           color: ${palette[props.color][props.colorNumber]};
           border: none;
           &:hover:enabled {
-            background-color: ${palette[props.color][1]}};
+            background-color: ${palette[props.color][0]}};
+            transition: all 0.15s;
           }
           &:active:enabled {
-            background-color: ${palette[props.color][2]}};
+            background-color: ${palette[props.color][1]}};
           }
           &:disabled {
             opacity: 0.4;
