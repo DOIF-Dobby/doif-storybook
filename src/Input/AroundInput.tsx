@@ -12,13 +12,28 @@ type StyledInputProps = {
   width: string | number;
 };
 
-function AroundInput({ label, color, width, value, onChange }: InputProps) {
+function AroundInput({
+  label,
+  color,
+  width,
+  type,
+  value,
+  onChange,
+  onInput,
+}: InputProps) {
   return (
     <StyledInput
       color={color}
       number={color === Color.GRAY ? 7 : 5}
       width={width ? width : '100%'}>
-      <input type="text" placeholder=" " value={value} onChange={onChange} />
+      <input
+        type={type}
+        placeholder=" "
+        value={value}
+        onChange={onChange}
+        onInput={onInput}
+        title={label}
+      />
       <label>{label}</label>
     </StyledInput>
   );

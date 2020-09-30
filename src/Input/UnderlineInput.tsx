@@ -12,13 +12,28 @@ type StyledInputProps = {
   width: string | number;
 };
 
-function UnderlineInput({ label, color, width, value, onChange }: InputProps) {
+function UnderlineInput({
+  label,
+  color,
+  width,
+  type,
+  value,
+  onChange,
+  onInput,
+}: InputProps) {
   return (
     <StyledInput
       color={color}
       number={color === Color.GRAY ? 7 : 5}
       width={width ? width : '100%'}>
-      <input type="text" placeholder=" " value={value} onChange={onChange} />
+      <input
+        type={type}
+        placeholder=" "
+        value={value}
+        onChange={onChange}
+        onInput={onInput}
+        title={label}
+      />
       <div className="underline"></div>
       <label>{label}</label>
     </StyledInput>

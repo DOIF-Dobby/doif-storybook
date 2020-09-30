@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import { InputHTMLAttributes } from 'react';
 import Color from '../styles/colors/Color';
 import AroundInput from './AroundInput';
 import BasicInput from './BasicInput';
 import UnderlineInput from './UnderlineInput';
 
-export type InputProps = {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   /** input의 모양을 설정합니다. */
   variant?: 'basic' | 'underline' | 'around';
   /** label을 설정합니다. `variant`가 `underline`이나 `around`일 경우 필수로 넣어야합니다.*/
@@ -14,13 +15,18 @@ export type InputProps = {
   color: Color;
   /** input의 넓이를 설정합니다. */
   width?: string | number;
-  /** input의 값을 설정합니다. */
-  value: string;
-  /** input의 값을 변경하는 onChange 함수입니다. */
-  onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
-};
+}
 
-function Input({ variant, label, color, width, value, onChange }: InputProps) {
+function Input({
+  variant,
+  label,
+  color,
+  width,
+  type,
+  value,
+  onChange,
+  onInput,
+}: InputProps) {
   switch (variant) {
     case 'basic':
       return (
@@ -28,8 +34,10 @@ function Input({ variant, label, color, width, value, onChange }: InputProps) {
           label={label}
           color={color}
           width={width}
+          type={type}
           value={value}
           onChange={onChange}
+          onInput={onInput}
         />
       );
     case 'underline':
@@ -38,8 +46,10 @@ function Input({ variant, label, color, width, value, onChange }: InputProps) {
           label={label}
           color={color}
           width={width}
+          type={type}
           value={value}
           onChange={onChange}
+          onInput={onInput}
         />
       );
     case 'around':
@@ -48,8 +58,10 @@ function Input({ variant, label, color, width, value, onChange }: InputProps) {
           label={label}
           color={color}
           width={width}
+          type={type}
           value={value}
           onChange={onChange}
+          onInput={onInput}
         />
       );
   }
@@ -58,6 +70,7 @@ function Input({ variant, label, color, width, value, onChange }: InputProps) {
 Input.defaultProps = {
   variant: 'basic',
   color: Color.VIOLET,
+  type: 'text',
 };
 
 export default Input;

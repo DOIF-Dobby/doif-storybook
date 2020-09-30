@@ -12,17 +12,27 @@ type StyledInputProps = {
   width: string | number;
 };
 
-function BasicInput({ label, color, width, value, onChange }: InputProps) {
+function BasicInput({
+  label,
+  color,
+  width,
+  type,
+  value,
+  onChange,
+  onInput,
+}: InputProps) {
   return (
     <StyledInput
       color={color}
       number={color === Color.GRAY ? 7 : 5}
       width={width ? width : '100%'}>
       <input
-        type="text"
+        type={type}
         placeholder={label}
         value={value}
         onChange={onChange}
+        onInput={onInput}
+        title={label}
       />
     </StyledInput>
   );

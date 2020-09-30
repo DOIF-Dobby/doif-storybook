@@ -15,8 +15,13 @@ export default {
 };
 
 export const input = () => {
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  }, []);
+
   const label = text('label', 'Name');
-  const value = text('value', '김명진');
   const variant = select('variant', ['basic', 'underline', 'around'], 'basic');
   const color = select(
     'color',
@@ -40,7 +45,15 @@ export const input = () => {
     Color.VIOLET
   );
 
-  return <Input variant={variant} label={label} color={color} value={value} />;
+  return (
+    <Input
+      variant={variant}
+      label={label}
+      color={color}
+      value={value}
+      onChange={onChange}
+    />
+  );
 };
 
 input.story = {
@@ -116,5 +129,53 @@ export const customWidth = () => {
         onChange={onChange}
       />
     </div>
+  );
+};
+
+export const otherTypeInput = () => {
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  }, []);
+  return (
+    <div>
+      <Input
+        variant="underline"
+        label="Name"
+        value={value}
+        onChange={onChange}
+        type="password"
+      />
+      <br />
+
+      <Input variant="around" type="file" />
+    </div>
+  );
+};
+
+export const uncontrolledInput = () => {
+  return <Input variant="around" />;
+};
+
+export const testInput = () => {
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  }, []);
+
+  const onInput = () => {
+    console.log('존나 어렵네');
+  };
+
+  return (
+    <Input
+      variant="around"
+      onChange={onChange}
+      value={value}
+      label="어렵네"
+      onInput={onInput}
+    />
   );
 };
