@@ -4,12 +4,7 @@ import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Color from '../styles/colors/Color';
 import palette from '../styles/colors/palette';
-
-type UnderlineInputProps = {
-  placeholder?: string;
-  color: Color;
-  width?: string | number;
-};
+import { InputProps } from './Input';
 
 type StyledInputProps = {
   color: Color;
@@ -17,15 +12,15 @@ type StyledInputProps = {
   width: string | number;
 };
 
-function UnderlineInput({ placeholder, color, width }: UnderlineInputProps) {
+function UnderlineInput({ label, color, width, value, onChange }: InputProps) {
   return (
     <StyledInput
       color={color}
       number={color === Color.GRAY ? 7 : 5}
       width={width ? width : '100%'}>
-      <input type="text" placeholder=" " />
+      <input type="text" placeholder=" " value={value} onChange={onChange} />
       <div className="underline"></div>
-      <label>{placeholder}</label>
+      <label>{label}</label>
     </StyledInput>
   );
 }

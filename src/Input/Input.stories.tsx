@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Icon from '../Icon/Icon';
 import Color from '../styles/colors/Color';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
 export default {
   title: 'components/Input',
@@ -15,12 +15,9 @@ export default {
 };
 
 export const input = () => {
-  const placeholder = text('placeholder', 'Name');
-  const variant = select(
-    'variant',
-    ['basic', 'underline', 'around'],
-    'underline'
-  );
+  const label = text('label', 'Name');
+  const value = text('value', '김명진');
+  const variant = select('variant', ['basic', 'underline', 'around'], 'basic');
   const color = select(
     'color',
     [
@@ -43,36 +40,80 @@ export const input = () => {
     Color.VIOLET
   );
 
-  return <Input variant={variant} placeholder={placeholder} color={color} />;
+  return <Input variant={variant} label={label} color={color} value={value} />;
 };
 
 input.story = {
   name: 'Default',
 };
 
+export const underlineInput = () => {
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  }, []);
+  return (
+    <Input variant="underline" label="Name" value={value} onChange={onChange} />
+  );
+};
+
 export const aroundInput = () => {
-  return <Input variant="around" placeholder="Name" />;
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  }, []);
+  return (
+    <Input variant="around" label="Name" value={value} onChange={onChange} />
+  );
 };
 
 export const customWidth = () => {
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  }, []);
+
   return (
     <div>
-      <Input variant="underline" placeholder="Name" width="50%" />
-      <br />
-      <Input variant="around" placeholder="Name" width="50%" />
+      <Input width="50%" value={value} onChange={onChange} />
       <br />
       <Input
         variant="underline"
-        placeholder="Name"
-        width="250px"
-        color={Color.TEAL}
+        label="Name"
+        width="50%"
+        value={value}
+        onChange={onChange}
       />
       <br />
       <Input
         variant="around"
-        placeholder="Name"
+        label="Name"
+        width="50%"
+        value={value}
+        onChange={onChange}
+      />
+      <br />
+      <Input width="250px" value={value} onChange={onChange} />
+      <br />
+      <Input
+        variant="underline"
+        label="Name"
+        width="250px"
+        color={Color.TEAL}
+        value={value}
+        onChange={onChange}
+      />
+      <br />
+      <Input
+        variant="around"
+        label="Name"
         width="250px"
         color={Color.GRAY}
+        value={value}
+        onChange={onChange}
       />
     </div>
   );
