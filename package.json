@@ -1,6 +1,6 @@
 {
   "name": "doif-react-uikit",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "module": "dist/index.js",
   "license": "MIT",
   "types": "dist/types/index.d.ts",
