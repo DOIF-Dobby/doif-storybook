@@ -1,40 +1,17 @@
 import React from 'react';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Color from '../styles/colors/Color';
 import palette from '../styles/colors/palette';
-import { InputProps } from './Input';
+import { InputProps, StyledInputProps } from './Input';
 
-type StyledInputProps = {
-  color: Color;
-  number: number;
-  width: string | number;
-};
-
-function AroundInput({
-  label,
-  color,
-  width,
-  type,
-  value,
-  onChange,
-  onInput,
-}: InputProps) {
+function OutlineInput(props: InputProps) {
   return (
     <StyledInput
-      color={color}
-      number={color === Color.GRAY ? 7 : 5}
-      width={width ? width : '100%'}>
-      <input
-        type={type}
-        placeholder=" "
-        value={value}
-        onChange={onChange}
-        onInput={onInput}
-        title={label}
-      />
-      <label>{label}</label>
+      color={props.color}
+      number={props.color === Color.GRAY ? 7 : 5}
+      width={props.width ? props.width : '100%'}>
+      <input {...props} title={props.label} placeholder=" " />
+      <label>{props.label}</label>
     </StyledInput>
   );
 }
@@ -79,4 +56,4 @@ const StyledInput = styled.div`
   }
 `;
 
-export default AroundInput;
+export default OutlineInput;

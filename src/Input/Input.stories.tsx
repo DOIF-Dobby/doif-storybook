@@ -22,7 +22,7 @@ export const input = () => {
   }, []);
 
   const label = text('label', 'Name');
-  const variant = select('variant', ['basic', 'underline', 'around'], 'basic');
+  const variant = select('variant', ['basic', 'underline', 'outline'], 'basic');
   const color = select(
     'color',
     [
@@ -71,14 +71,14 @@ export const underlineInput = () => {
   );
 };
 
-export const aroundInput = () => {
+export const outlineInput = () => {
   const [value, setValue] = useState('');
 
   const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   }, []);
   return (
-    <Input variant="around" label="Name" value={value} onChange={onChange} />
+    <Input variant="outline" label="Name" value={value} onChange={onChange} />
   );
 };
 
@@ -102,7 +102,7 @@ export const customWidth = () => {
       />
       <br />
       <Input
-        variant="around"
+        variant="outline"
         label="Name"
         width="50%"
         value={value}
@@ -121,7 +121,7 @@ export const customWidth = () => {
       />
       <br />
       <Input
-        variant="around"
+        variant="outline"
         label="Name"
         width="250px"
         color={Color.GRAY}
@@ -149,13 +149,13 @@ export const otherTypeInput = () => {
       />
       <br />
 
-      <Input variant="around" type="file" />
+      <Input variant="outline" type="file" />
     </div>
   );
 };
 
 export const uncontrolledInput = () => {
-  return <Input variant="around" />;
+  return <Input variant="outline" label="Uncontrolled" />;
 };
 
 export const testInput = () => {
@@ -166,16 +166,21 @@ export const testInput = () => {
   }, []);
 
   const onInput = () => {
-    console.log('존나 어렵네');
+    console.log('onInput test');
+  };
+
+  const onFocus = () => {
+    console.log('onFocus test');
   };
 
   return (
     <Input
-      variant="around"
+      variant="outline"
       onChange={onChange}
       value={value}
-      label="어렵네"
+      label="onInput, onFocus"
       onInput={onInput}
+      onFocus={onFocus}
     />
   );
 };
