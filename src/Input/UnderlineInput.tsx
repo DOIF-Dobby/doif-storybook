@@ -9,7 +9,8 @@ function UnderlineInput(props: InputProps) {
     <StyledInput
       color={props.color}
       number={props.color === Color.GRAY ? 7 : 5}
-      width={props.width ? props.width : '100%'}>
+      width={props.width ? props.width : '100%'}
+      disabled={props.disabled}>
       <input {...props} title={props.label} placeholder=" " />
       <div className="underline"></div>
       <label>{props.label}</label>
@@ -28,6 +29,7 @@ const StyledInput = styled.div`
     border: none;
     border-bottom: 1px solid ${palette.gray[6]};
     padding: 0;
+    background-color: transparent;
   }
   & > input:focus ~ label,
   & > input:not(:placeholder-shown) ~ label {
@@ -38,6 +40,10 @@ const StyledInput = styled.div`
 
   & > input:focus ~ label {
     color: ${(props: StyledInputProps) => palette[props.color][props.number]};
+  }
+  & > input:disabled {
+    border-bottom: 1px solid ${palette.gray[4]};
+    color: ${palette.gray[4]};
   }
 
   & > label {

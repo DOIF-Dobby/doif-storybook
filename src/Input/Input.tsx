@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { InputHTMLAttributes } from 'react';
 import Color from '../styles/colors/Color';
 import OutlineInput from './OutlineInput';
 import BasicInput from './BasicInput';
@@ -25,6 +24,7 @@ export type StyledInputProps = {
   color: Color;
   number: number;
   width: string | number;
+  disabled?: boolean;
 };
 
 function Input(props: InputProps) {

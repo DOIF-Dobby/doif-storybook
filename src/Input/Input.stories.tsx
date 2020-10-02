@@ -132,6 +132,18 @@ export const customWidth = () => {
   );
 };
 
+export const disabledInput = () => {
+  return (
+    <div>
+      <Input label="disabled" disabled />
+      <br />
+      <Input variant="outline" label="disabled" disabled />
+      <br />
+      <Input variant="underline" label="disabled" disabled />
+    </div>
+  );
+};
+
 export const otherTypeInput = () => {
   const [value, setValue] = useState('');
 

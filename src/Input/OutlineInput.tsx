@@ -9,7 +9,8 @@ function OutlineInput(props: InputProps) {
     <StyledInput
       color={props.color}
       number={props.color === Color.GRAY ? 7 : 5}
-      width={props.width ? props.width : '100%'}>
+      width={props.width ? props.width : '100%'}
+      disabled={props.disabled}>
       <input {...props} title={props.label} placeholder=" " />
       <label>{props.label}</label>
     </StyledInput>
@@ -38,6 +39,11 @@ const StyledInput = styled.div`
   & > input:focus {
     border: 2px solid
       ${(props: StyledInputProps) => palette[props.color][props.number]};
+  }
+  & > input:disabled {
+    background-color: #fff;
+    border: 1px solid ${palette.gray[4]};
+    color: ${palette.gray[4]};
   }
 
   & > input:focus ~ label {
