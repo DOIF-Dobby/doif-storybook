@@ -35,6 +35,8 @@ function Input(props: InputProps) {
       return <UnderlineInput {...props} />;
     case 'outline':
       return <OutlineInput {...props} />;
+    default:
+      return null;
   }
 }
 
