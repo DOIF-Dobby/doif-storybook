@@ -20,12 +20,12 @@ export interface InputProps
   width?: string | number;
 }
 
-export type StyledInputProps = {
+export interface StyledInputProps {
   color: Color;
   number: number;
-  width: string | number;
+  width?: string | number;
   disabled?: boolean;
-};
+}
 
 function Input(props: InputProps) {
   switch (props.variant) {
