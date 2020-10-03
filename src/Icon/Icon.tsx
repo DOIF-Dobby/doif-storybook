@@ -5,7 +5,7 @@ import * as icons from '../icons/svg';
 type IconType = keyof typeof icons;
 export const iconTypes: IconType[] = Object.keys(icons) as any[]; // 스토리에서 불러오기 위함
 
-export type IconProps = {
+export interface IconProps {
   /** 사용할 아이콘 타입 */
   icon: IconType;
   /** 아이콘 색상 */
@@ -14,7 +14,7 @@ export type IconProps = {
   size?: string | number;
   /** 커스텀 스타일 적용을 위한 class name */
   className?: string;
-};
+}
 
 /** 아이콘을 보여주고 싶을 땐 `Icon` 컴포넌트를 사용하세요.
  *

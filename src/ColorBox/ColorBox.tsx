@@ -3,10 +3,10 @@ import { jsx, css } from '@emotion/core';
 import Color from '../styles/colors/Color';
 import palette from '../styles/colors/palette';
 
-type ColorNumberType = {
+interface ColorNumberType {
   color: Color;
   number: number;
-};
+}
 
 function ColorBox({ color, number }: ColorNumberType) {
   const colorPalette = palette[color];

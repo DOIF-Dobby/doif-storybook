@@ -3,20 +3,13 @@ import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Color from '../styles/colors/Color';
 import palette from '../styles/colors/palette';
+import { SpinnerProps } from './Spinner';
 
-type CubeSpinnerProps = {
-  color: Color;
-  zIndex: number;
-};
+interface StyledPCubeSpinnerProps extends SpinnerProps {}
 
-type StyledPCubeSpinnerProps = {
-  color: Color;
-  zIndex: number;
-};
-
-function CubeSpinner({ color, zIndex }: CubeSpinnerProps) {
+function CubeSpinner({ color, zIndex, variant }: SpinnerProps) {
   return (
-    <StyledCubeSpinner color={color} zIndex={zIndex}>
+    <StyledCubeSpinner color={color} zIndex={zIndex} variant={variant}>
       <div></div>
       <div></div>
       <div></div>

@@ -3,20 +3,13 @@ import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Color from '../styles/colors/Color';
 import palette from '../styles/colors/palette';
+import { SpinnerProps } from './Spinner';
 
-type BasicSpinnerProps = {
-  color: Color;
-  zIndex: number;
-};
+interface StyledBasicSpinnerProps extends SpinnerProps {}
 
-type StyledBasicSpinnerProps = {
-  color: Color;
-  zIndex: number;
-};
-
-function BasicSpinner({ color, zIndex }: BasicSpinnerProps) {
+function BasicSpinner({ color, zIndex, variant }: SpinnerProps) {
   return (
-    <StyledBasicSpinner color={color} zIndex={zIndex}>
+    <StyledBasicSpinner color={color} zIndex={zIndex} variant={variant}>
       <div></div>
       <div></div>
       <div></div>

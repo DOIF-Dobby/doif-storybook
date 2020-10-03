@@ -3,16 +3,14 @@ import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Color from '../styles/colors/Color';
 
-type DarkLayerProps = {
+interface DarkLayerProps {
   /** z-index 속성을 설정합니다. */
   zIndex: number;
   // /** Layer 위에 표시될 컴포넌트 기본 z-index는 DarkLayer의 z-index +10 입니다. */
   // children: React.ReactNode;
-};
+}
 
-type StyledDarkLayerProps = {
-  zIndex: number;
-};
+interface StyledDarkLayerProps extends DarkLayerProps {}
 
 /**
  * `DarkLayer`는 화면 전체를 어둡고 반투명한 Layer로 덮습니다.

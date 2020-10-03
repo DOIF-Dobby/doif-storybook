@@ -3,20 +3,13 @@ import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Color from '../styles/colors/Color';
 import palette from '../styles/colors/palette';
+import { SpinnerProps } from './Spinner';
 
-type PulseSpinnerProps = {
-  color: Color;
-  zIndex: number;
-};
+interface StyledPulseSpinnerProps extends SpinnerProps {}
 
-type StyledPulseSpinnerProps = {
-  color: Color;
-  zIndex: number;
-};
-
-function PulseSpinner({ color, zIndex }: PulseSpinnerProps) {
+function PulseSpinner({ color, zIndex, variant }: SpinnerProps) {
   return (
-    <StyledPulseSpinner color={color} zIndex={zIndex}>
+    <StyledPulseSpinner color={color} zIndex={zIndex} variant={variant}>
       <div></div>
       <div></div>
       <div></div>
