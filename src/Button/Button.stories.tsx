@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Icon from '../Icon/Icon';
 import Color from '../styles/colors/Color';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default {
   title: 'components/Button',
@@ -118,10 +118,17 @@ export const disabled = () => {
   return (
     <div css={buttonWrapper}>
       <div>
-        <Button disabled>PRIMARY</Button>
+        <Button disabled>Disabled</Button>
       </div>
       <div>
-        <Button disabled>SECONDARY</Button>
+        <Button variant="outline" disabled>
+          Disabled
+        </Button>
+      </div>
+      <div>
+        <Button variant="text" disabled>
+          Disabled
+        </Button>
       </div>
     </div>
   );
@@ -169,6 +176,22 @@ export const loadingButton = () => {
         <Icon icon="heart" />
       </Button>
     </ButtonGroup>
+  );
+};
+
+export const buttonTest = () => {
+  const onClick = useCallback(() => {
+    console.log('onClick');
+  }, []);
+
+  const onMouseEnter = useCallback(() => {
+    console.log('onMouseEnter');
+  }, []);
+
+  return (
+    <Button onClick={onClick} onMouseEnter={onMouseEnter} color={Color.TEAL}>
+      Button
+    </Button>
   );
 };
 
@@ -263,10 +286,16 @@ export const iconOnly = () => {
         <Button iconOnly disabled size="small">
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly size="small">
+        <Button iconOnly size="small" variant="outline">
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly disabled size="small">
+        <Button iconOnly disabled size="small" variant="outline">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly size="small" variant="text">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly disabled size="small" variant="text">
           <Icon icon="heart" />
         </Button>
       </ButtonGroup>
@@ -278,10 +307,16 @@ export const iconOnly = () => {
         <Button iconOnly disabled>
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly>
+        <Button iconOnly variant="outline">
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly disabled>
+        <Button iconOnly disabled variant="outline">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly variant="text">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly disabled variant="text">
           <Icon icon="heart" />
         </Button>
       </ButtonGroup>
@@ -293,10 +328,16 @@ export const iconOnly = () => {
         <Button iconOnly disabled size="big">
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly size="big">
+        <Button iconOnly size="big" variant="outline">
           <Icon icon="heart" />
         </Button>
-        <Button iconOnly disabled size="big">
+        <Button iconOnly disabled size="big" variant="outline">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly size="big" variant="text">
+          <Icon icon="heart" />
+        </Button>
+        <Button iconOnly disabled size="big" variant="text">
           <Icon icon="heart" />
         </Button>
       </ButtonGroup>

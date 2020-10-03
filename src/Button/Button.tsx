@@ -5,7 +5,11 @@ import Color from '../styles/colors/Color';
 
 import palette from '../styles/colors/palette';
 
-type ButtonProps = {
+interface ButtonProps
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   /** 버튼 안의 내용 */
   children: React.ReactNode;
   /** 버튼의 색을 설정합니다. */
@@ -22,44 +26,25 @@ type ButtonProps = {
   iconOnly?: boolean;
   /** 로딩 상태, `isLoading`이 `true`면 클릭이 블가능합니다. */
   isLoading?: boolean;
-  /** 클릭했을 때 호출할 함수 */
-  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
-};
+}
 
-type StyledButtonProps = {
-  color: Color;
-  colorNumber: number;
-  variant: 'contain' | 'outline' | 'text';
-};
+interface StyledButtonProps extends ButtonProps {}
 
 /**
  * `Button` 컴포넌트는 어떠한 작업을 트리거할 때 사용합니다.
  */
-function Button({
-  children,
-  color,
-  variant,
-  size,
-  disabled,
-  width,
-  iconOnly,
-  isLoading,
-  onClick,
-}: ButtonProps) {
+function Button(props: ButtonProps) {
   return (
     <StyledButton
-      onClick={onClick}
-      disabled={disabled || isLoading}
-      color={color}
-      variant={variant}
-      colorNumber={color === Color.GRAY ? 7 : 5}
+      disabled={props.disabled || props.isLoading}
+      {...props}
       css={[
         style,
-        sizes[size],
-        { width },
-        iconOnly && [iconOnlyStyle, iconOnlySizes[size]],
+        sizes[props.size],
+        { width: props.width },
+        props.iconOnly && [iconOnlyStyle, iconOnlySizes[props.size]],
       ]}>
-      <span className="contents-style">{children}</span>
+      <span className="contents-style">{props.children}</span>
     </StyledButton>
   );
 }
@@ -99,18 +84,20 @@ const StyledButton = styled.button`
   }
 
   ${(props: StyledButtonProps) => {
+    const colorNumber = props.color === Color.GRAY ? 7 : 5;
+
     switch (props.variant) {
       case 'contain':
         return `
-          background-color: ${palette[props.color][props.colorNumber]};
+          background-color: ${palette[props.color][colorNumber]};
           color: white;
           border: none;
           &:hover:enabled {
-            background-color: ${palette[props.color][props.colorNumber + 1]}};
+            background-color: ${palette[props.color][colorNumber + 1]}};
             transition: all 0.15s;
           }
           &:active:enabled {
-            background-color: ${palette[props.color][props.colorNumber + 2]}};
+            background-color: ${palette[props.color][colorNumber + 2]}};
           }
           &:disabled {
             opacity: 0.4;
@@ -128,8 +115,8 @@ const StyledButton = styled.button`
       case 'outline':
         return `
           background-color: transparent;
-          color: ${palette[props.color][props.colorNumber]};
-          border: 1px solid ${palette[props.color][props.colorNumber]};
+          color: ${palette[props.color][colorNumber]};
+          border: 1px solid ${palette[props.color][colorNumber]};
           &:hover:enabled {
             background-color: ${palette[props.color][0]}};
             transition: all 0.15s;
@@ -144,7 +131,7 @@ const StyledButton = styled.button`
       case 'text':
         return `
           background-color: white;
-          color: ${palette[props.color][props.colorNumber]};
+          color: ${palette[props.color][colorNumber]};
           border: none;
           &:hover:enabled {
             background-color: ${palette[props.color][0]}};
