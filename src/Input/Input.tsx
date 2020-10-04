@@ -11,13 +11,15 @@ export interface InputProps
     HTMLInputElement
   > {
   /** input의 모양을 설정합니다. */
-  variant?: 'basic' | 'underline' | 'outline';
-  /** label을 설정합니다. `variant`가 `underline`이나 `around`일 경우 필수로 넣어야합니다.*/
+  variant: 'basic' | 'underline' | 'outline';
+  /** label을 설정합니다. `variant`가 `underline`이나 `outline`일 경우 필수로 넣어야합니다.*/
   label?: string;
   /** input의 색을 정합니다. */
   color: Color;
   /** input의 넓이를 설정합니다. */
   width?: string | number;
+  /** select box에서 사용할 경우 의미있는 값이므로 `Input`의 용도로 사용할 땐 설정하지 않습니다.  */
+  isSelect?: boolean;
 }
 
 export interface StyledInputProps {
@@ -25,8 +27,12 @@ export interface StyledInputProps {
   number: number;
   width?: string | number;
   disabled?: boolean;
+  isSelect?: boolean;
 }
 
+/**
+ * `Input` 컴포넌트는 값을 입력할 때 사용합니다.
+ */
 function Input(props: InputProps) {
   switch (props.variant) {
     case 'basic':
@@ -44,6 +50,7 @@ Input.defaultProps = {
   variant: 'basic',
   color: Color.VIOLET,
   type: 'text',
+  isSelect: false,
 };
 
 export default Input;

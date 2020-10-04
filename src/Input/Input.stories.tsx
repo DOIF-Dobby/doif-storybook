@@ -1,12 +1,9 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import Input from './Input';
-import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-import ButtonGroup from '../ButtonGroup/ButtonGroup';
-import Icon from '../Icon/Icon';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 import Color from '../styles/colors/Color';
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 
 export default {
   title: 'components/Input',
