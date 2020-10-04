@@ -32,6 +32,15 @@ const StyledInput = styled.div`
     border: 1px solid ${palette.gray[7]};
     border-radius: 4px;
     padding: 0 0.75rem 0 0.75rem;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: ${palette.gray[8]};
+      -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+      box-shadow: 0 0 0px 1000px #fff inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
   }
 
   ${(props: StyledInputProps) => {
