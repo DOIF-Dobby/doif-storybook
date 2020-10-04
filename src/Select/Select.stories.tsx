@@ -3,7 +3,6 @@ import { jsx, css } from '@emotion/core';
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import Color from '../styles/colors/Color';
 import Select from './Select';
-import MSelect from '@material-ui/core/Select';
 
 const data = [
   { code: 'A', name: '안녕하세요.' },
@@ -16,8 +15,22 @@ export default {
   component: Select,
 };
 
+const selectWrapperStyle = css`
+  height: 300px;
+`;
+
 export const select = () => {
-  return <Select data={data} />;
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
+    setValue(e.target.value);
+  }, []);
+
+  return (
+    <div css={selectWrapperStyle}>
+      <Select data={data} value={value} onChange={onChange} />
+    </div>
+  );
 };
 
 select.story = {
@@ -25,17 +38,55 @@ select.story = {
 };
 
 export const underlineSelect = () => {
-  return <Select variant="underline" label="Underline" data={data} />;
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
+    setValue(e.target.value);
+  }, []);
+
+  return (
+    <div css={selectWrapperStyle}>
+      <Select
+        variant="underline"
+        label="Underline"
+        data={data}
+        value={value}
+        onChange={onChange}
+      />
+    </div>
+  );
 };
 
 export const outlineSelect = () => {
-  return <Select variant="outline" label="Outline" data={data} />;
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
+    setValue(e.target.value);
+  }, []);
+
+  return (
+    <div css={selectWrapperStyle}>
+      <Select
+        variant="outline"
+        label="Outline"
+        data={data}
+        value={value}
+        onChange={onChange}
+      />
+    </div>
+  );
 };
 
 export const customWidth = () => {
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
+    setValue(e.target.value);
+  }, []);
+
   return (
-    <div>
-      <Select width="30%" data={data} />
+    <div css={selectWrapperStyle}>
+      <Select width="30%" data={data} value={value} onChange={onChange} />
       <br />
       <Select
         variant="underline"
@@ -43,6 +94,8 @@ export const customWidth = () => {
         label="Underline"
         color={Color.TEAL}
         data={data}
+        value={value}
+        onChange={onChange}
       />
       <br />
       <Select
@@ -51,70 +104,90 @@ export const customWidth = () => {
         label="Outline"
         color={Color.RED}
         data={data}
+        value={value}
+        onChange={onChange}
       />
     </div>
   );
 };
 
 export const defValSelect = () => {
+  const data = [
+    { code: 'CODE_01', name: 'CODE01' },
+    { code: 'CODE_02', name: 'CODE02' },
+    { code: 'CODE_03', name: 'CODE03' },
+    { code: 'CODE_04', name: 'CODE04' },
+    { code: 'CODE_05', name: 'CODE05' },
+    { code: 'CODE_06', name: 'CODE06' },
+    { code: 'CODE_07', name: 'CODE07' },
+    { code: 'CODE_08', name: 'CODE08' },
+    { code: 'CODE_09', name: 'CODE09' },
+    { code: 'CODE_10', name: 'CODE10' },
+    { code: 'CODE_11', name: 'CODE11' },
+    { code: 'CODE_12', name: 'CODE12' },
+    { code: 'CODE_13', name: 'CODE13' },
+    { code: 'CODE_14', name: 'CODE14' },
+    { code: 'CODE_15', name: 'CODE15' },
+    { code: 'CODE_16', name: 'CODE16' },
+  ];
   const defVal = { code: '', name: '선택없음' };
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
+    setValue(e.target.value);
+  }, []);
+
   return (
-    <Select
-      variant="underline"
-      width="30%"
-      label="defVal"
-      data={data}
-      defVal={defVal}
-    />
+    <div css={selectWrapperStyle}>
+      <Select
+        variant="underline"
+        width="30%"
+        label="defVal"
+        data={data}
+        defVal={defVal}
+        value={value}
+        onChange={onChange}
+      />
+    </div>
   );
 };
 
 export const initValSelect = () => {
   const data = [
-    { code: 'CODE_01', name: '코드01' },
-    { code: 'CODE_02', name: '코드02' },
-    { code: 'CODE_03', name: '코드03' },
-  ];
-  const defVal = { code: '', name: '선택없음' };
-  const initVal = 'CODE_02';
-
-  return (
-    <Select
-      variant="outline"
-      label="intVal"
-      data={data}
-      defVal={defVal}
-      initVal={initVal}
-    />
-  );
-};
-
-export const changeSelect = () => {
-  const data = [
-    { code: 'CODE_01', name: '코드01' },
-    { code: 'CODE_02', name: '코드02' },
-    { code: 'CODE_03', name: '코드03' },
+    { code: 'CODE_01', name: 'CODE01' },
+    { code: 'CODE_02', name: 'CODE02' },
+    { code: 'CODE_03', name: 'CODE03' },
+    { code: 'CODE_04', name: 'CODE04' },
+    { code: 'CODE_05', name: 'CODE05' },
+    { code: 'CODE_06', name: 'CODE06' },
+    { code: 'CODE_07', name: 'CODE07' },
+    { code: 'CODE_08', name: 'CODE08' },
+    { code: 'CODE_09', name: 'CODE09' },
+    { code: 'CODE_10', name: 'CODE10' },
+    { code: 'CODE_11', name: 'CODE11' },
+    { code: 'CODE_12', name: 'CODE12' },
+    { code: 'CODE_13', name: 'CODE13' },
+    { code: 'CODE_14', name: 'CODE14' },
+    { code: 'CODE_15', name: 'CODE15' },
+    { code: 'CODE_16', name: 'CODE16' },
   ];
   const defVal = { code: '', name: '선택없음' };
 
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('CODE_02');
 
   const onChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.name);
-    console.log(e.target.value);
     setValue(e.target.value);
   }, []);
 
   return (
-    <div>
+    <div css={selectWrapperStyle}>
       <Select
         variant="outline"
-        label="change"
+        label="intVal"
         data={data}
         defVal={defVal}
-        name="change_select"
-        onChange={onChange}
         value={value}
+        onChange={onChange}
       />
     </div>
   );
