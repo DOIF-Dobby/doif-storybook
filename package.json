@@ -1,6 +1,6 @@
 {
   "name": "doif-react-uikit",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "module": "dist/index.js",
   "license": "MIT",
   "types": "dist/types/index.d.ts",
@@ -18,9 +18,11 @@
     "@storybook/react": "^6.0.21",
     "@storybook/theming": "^6.0.21",
     "@svgr/rollup": "^5.4.0",
+    "@types/lodash": "^4.14.161",
     "babel-loader": "^8.1.0",
     "babel-plugin-named-asset-import": "^0.3.6",
     "babel-preset-react-app": "^9.1.2",
+    "lodash": "^4.17.20",
     "react-docgen-typescript-loader": "^3.7.2",
     "rollup": "^2.28.1",
     "rollup-plugin-babel": "^4.4.0",
@@ -30,9 +32,7 @@
     "rollup-plugin-url": "^3.0.1",
     "typescript": "^4.0.2"
   },
-  "dependencies": {
-    "lodash": "^4.17.20"
-  },
+  "dependencies": {},
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
