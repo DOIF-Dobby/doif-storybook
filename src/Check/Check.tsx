@@ -9,6 +9,8 @@ interface CheckProps {
   data: Array<CheckedProps>;
   /** check box의 checked를 설정합니다. */
   value: string[];
+  /** check box의 이름을 설정합니다. */
+  name?: string;
   /** check box의 색을 정합니다. */
   color: Color;
   /** check box를 변경했을 때 트리거되는 함수입니다. */
@@ -40,6 +42,7 @@ function Check(props: CheckProps) {
           <label key={d.code}>
             <input
               type="checkbox"
+              name={props.name}
               checked={isChecking}
               data-code={d.code}
               onChange={props.onChange}
