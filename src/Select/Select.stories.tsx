@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 import Color from '../styles/colors/Color';
 import Select from './Select';
 
@@ -13,13 +14,38 @@ const data = [
 export default {
   title: 'components/Select',
   component: Select,
+  decorators: [withKnobs],
 };
 
 const selectWrapperStyle = css`
   height: 300px;
 `;
 
-export const select = () => {
+export const myselect = () => {
+  const label = text('label', 'Name');
+  const variant = select('variant', ['basic', 'underline', 'outline'], 'basic');
+  const color = select(
+    'color',
+    [
+      Color.WHITE,
+      Color.BLACK,
+      Color.GRAY,
+      Color.PINK,
+      Color.VIOLET,
+      Color.BLUE,
+      Color.TEAL,
+      Color.LIME,
+      Color.ORANGE,
+      Color.RED,
+      Color.GRAPE,
+      Color.INDIGO,
+      Color.CYAN,
+      Color.GREEN,
+      Color.YELLOW,
+    ],
+    Color.VIOLET
+  );
+
   const [value, setValue] = useState('');
 
   const onChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
@@ -28,12 +54,19 @@ export const select = () => {
 
   return (
     <div css={selectWrapperStyle}>
-      <Select data={data} value={value} onChange={onChange} />
+      <Select
+        data={data}
+        value={value}
+        onChange={onChange}
+        variant={variant}
+        color={color}
+        label={label}
+      />
     </div>
   );
 };
 
-select.story = {
+myselect.story = {
   name: 'Default',
 };
 
