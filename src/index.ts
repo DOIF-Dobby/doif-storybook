@@ -7,6 +7,7 @@ export { default as DarkLayer } from './DarkLayer/DarkLayer';
 export { default as Spinner } from './Spinner/Spinner';
 export { default as Input } from './Input/Input';
 export { default as Select } from './Select/Select';
+export { default as Check } from './Check/Check';
 
 /** enum */
 export { default as Color } from './styles/colors/Color';
