@@ -33,6 +33,8 @@ interface SelectProps
   defVal?: SelectedProps;
   /** select box의 높이를 설정합니다. */
   height: string | number;
+  /** select box를 비활성화 시킵니다. */
+  disabled: boolean;
 }
 
 interface StyledSelectProps {
@@ -114,7 +116,8 @@ function Select(props: SelectProps) {
       width={props.width ? props.width : '100%'}
       height={props.height}
       color={props.color}
-      number={props.color === Color.GRAY ? 7 : 5}>
+      number={props.color === Color.GRAY ? 7 : 5}
+    >
       <Input
         variant={props.variant}
         label={props.label}
@@ -123,6 +126,7 @@ function Select(props: SelectProps) {
         value={codeName}
         isSelect
         readOnly
+        disabled={props.disabled}
       />
       {isVisible && (
         <div className="list-wrapper">
@@ -140,7 +144,8 @@ function Select(props: SelectProps) {
                 key={d.code}
                 data-code={d.code}
                 onClick={onSelect}
-                className={d.code === value ? 'selected' : ''}>
+                className={d.code === value ? 'selected' : ''}
+              >
                 {d.name}
               </li>
             ))}
@@ -240,6 +245,7 @@ Select.defaultProps = {
   variant: 'basic',
   color: Color.VIOLET,
   height: '250px',
+  disabled: false,
 };
 
 export default Select;

@@ -15,7 +15,8 @@ function UnderlineInput(props: InputProps) {
       number={props.color === Color.GRAY ? 7 : 5}
       width={props.width ? props.width : '100%'}
       disabled={props.disabled}
-      isSelect={isSelect}>
+      isSelect={isSelect}
+    >
       <input {...newProps} title={props.label} placeholder=" " />
       <div className="underline"></div>
       <label>{props.label}</label>
@@ -56,7 +57,7 @@ const StyledInput = styled.div`
           content: '\\25bc';
           font-size: 1rem;
           display: flex;
-          color: #495057;
+          color: ${palette.gray[7]};
           width: 2.5rem;
           height: 100%;
           text-align: center;
@@ -74,6 +75,19 @@ const StyledInput = styled.div`
     }
   }}
 
+  ${(props: StyledInputProps) => {
+    if (props.disabled) {
+      return `
+        & > input:hover {
+          cursor: default;
+        }
+        &::after {
+          color: ${palette.gray[4]};
+        }
+      `;
+    }
+  }}
+
   & > input:focus ~ label,
   & > input:not(:placeholder-shown) ~ label {
     transform-origin: 0 0;
@@ -86,6 +100,9 @@ const StyledInput = styled.div`
   }
   & > input:disabled {
     border-bottom: 1px solid ${palette.gray[4]};
+    color: ${palette.gray[4]};
+  }
+  & > input:disabled ~ label {
     color: ${palette.gray[4]};
   }
 

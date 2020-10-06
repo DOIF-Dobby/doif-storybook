@@ -225,3 +225,55 @@ export const initValSelect = () => {
     </div>
   );
 };
+
+export const deiabledSelect = () => {
+  const data = [
+    { code: 'CODE_01', name: 'CODE01' },
+    { code: 'CODE_02', name: 'CODE02' },
+    { code: 'CODE_03', name: 'CODE03' },
+  ];
+  const defVal = { code: '', name: '선택없음' };
+
+  const [value, setValue] = useState('CODE_02');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
+    setValue(e.target.value);
+  }, []);
+
+  return (
+    <div css={selectWrapperStyle}>
+      <Select
+        variant="basic"
+        label="disabled"
+        width="30%"
+        data={data}
+        defVal={defVal}
+        value={value}
+        disabled
+        onChange={onChange}
+      />
+      <br />
+      <Select
+        variant="underline"
+        label="disabled"
+        width="30%"
+        data={data}
+        defVal={defVal}
+        value={value}
+        disabled
+        onChange={onChange}
+      />
+      <br />
+      <Select
+        variant="outline"
+        label="disabled"
+        width="30%"
+        data={data}
+        defVal={defVal}
+        value={value}
+        disabled
+        onChange={onChange}
+      />
+    </div>
+  );
+};
