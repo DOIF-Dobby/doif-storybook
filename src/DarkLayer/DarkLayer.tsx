@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { memo } from 'react';
 import Color from '../styles/colors/Color';
 
 interface DarkLayerProps {
@@ -36,4 +37,4 @@ const StyledDarkLayer = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-export default DarkLayer;
+export default memo(DarkLayer);

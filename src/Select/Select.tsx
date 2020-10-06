@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import React, {
   ChangeEvent,
+  memo,
   RefObject,
   useCallback,
   useRef,
@@ -83,8 +84,8 @@ function Select(props: SelectProps) {
   const selectRef: RefObject<HTMLSelectElement> = useRef(null);
 
   const onClick = useCallback(() => {
-    setIsVisible(!isVisible);
-  }, [isVisible]);
+    setIsVisible((isVisible) => !isVisible);
+  }, []);
 
   const onSelect = useCallback(
     (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
@@ -259,4 +260,4 @@ Select.defaultProps = {
   disabled: false,
 };
 
-export default Select;
+export default memo(Select);

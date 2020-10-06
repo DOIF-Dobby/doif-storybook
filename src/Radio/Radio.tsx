@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { memo } from 'react';
 import Color from '../styles/colors/Color';
 import palette from '../styles/colors/palette';
 
@@ -146,4 +147,4 @@ const StyledRadio = styled.div`
   }
 `;
 
-export default Radio;
+export default memo(Radio);

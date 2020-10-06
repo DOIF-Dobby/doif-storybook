@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { memo } from 'react';
 import Color from '../styles/colors/Color';
 
 import palette from '../styles/colors/palette';
@@ -202,4 +203,4 @@ const sizes = {
   `,
 };
 
-export default Button;
+export default memo(Button);
