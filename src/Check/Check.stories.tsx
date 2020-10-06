@@ -53,11 +53,12 @@ export const check = () => {
   const [value, setValue] = useState([]);
 
   const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const code = e.target.dataset.code;
-    const checked = e.target.checked;
+    const { checked, value: codeValue } = e.target;
 
     setValue((value) =>
-      checked ? value.concat(code) : value.filter((val) => val !== code)
+      checked
+        ? value.concat(codeValue)
+        : value.filter((val) => val !== codeValue)
     );
   }, []);
 

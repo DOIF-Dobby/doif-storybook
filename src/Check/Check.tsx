@@ -47,9 +47,9 @@ function Check(props: CheckProps) {
           <label key={d.code}>
             <input
               type="checkbox"
+              value={d.code}
               name={props.name}
               checked={isChecked}
-              data-code={d.code}
               disabled={props.disabled}
               onChange={props.onChange}
             />

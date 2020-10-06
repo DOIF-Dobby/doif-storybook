@@ -72,14 +72,13 @@ export const sample = () => {
 
   /** checkbox Change 함수 */
   const onChangeCheck = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const code = e.target.dataset.code;
-    const { checked, name } = e.target;
+    const { checked, value, name } = e.target;
 
     setValues((values) => ({
       ...values,
       [name]: checked
-        ? values[name].concat(code)
-        : values[name].filter((val: string) => val !== code),
+        ? values[name].concat(value)
+        : values[name].filter((val: string) => val !== value),
     }));
   }, []);
 
