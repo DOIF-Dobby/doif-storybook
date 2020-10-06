@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core';
+import { jsx, css, SerializedStyles } from '@emotion/core';
 import Color from '../styles/colors/Color';
 import OutlineInput from './OutlineInput';
 import BasicInput from './BasicInput';
@@ -18,6 +18,10 @@ export interface InputProps
   color: Color;
   /** input의 넓이를 설정합니다. */
   width?: string | number;
+  /** input에 icon을 넣습니다. */
+  icon?: React.ReactNode;
+  /** 커스텀 스타일을 적용할 수 있습니다. */
+  css?: SerializedStyles;
 }
 
 export interface StyledInputProps {
@@ -25,6 +29,7 @@ export interface StyledInputProps {
   number: number;
   width?: string | number;
   disabled?: boolean;
+  icon?: React.ReactNode;
 }
 
 /**

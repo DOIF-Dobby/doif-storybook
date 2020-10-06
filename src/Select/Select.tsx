@@ -11,6 +11,8 @@ import Input from '../Input/Input';
 import Color from '../styles/colors/Color';
 import palette from '../styles/colors/palette';
 import _ from 'lodash';
+import { css } from '@emotion/core';
+import Icon from '../Icon/Icon';
 
 interface SelectProps
   extends React.DetailedHTMLProps<
@@ -110,6 +112,14 @@ function Select(props: SelectProps) {
     onDebounceChangeData(e.target);
   }, []);
 
+  const selectInputStyle = css`
+    cursor: pointer;
+
+    & ~ div.icon-wrapper {
+      cursor: pointer;
+    }
+  `;
+
   return (
     <StyledSelect
       ref={wrapperRef}
@@ -126,6 +136,8 @@ function Select(props: SelectProps) {
         value={codeName}
         readOnly
         disabled={props.disabled}
+        css={selectInputStyle}
+        icon={<Icon icon="downArrow" />}
       />
       {isVisible && (
         <div className="list-wrapper">

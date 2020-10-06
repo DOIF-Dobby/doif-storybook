@@ -4,6 +4,7 @@ import Input from './Input';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
 import Color from '../styles/colors/Color';
 import { ChangeEvent, useCallback, useState } from 'react';
+import Icon from '../Icon/Icon';
 
 export default {
   title: 'components/Input',
@@ -191,5 +192,127 @@ export const testInput = () => {
       onInput={onInput}
       onFocus={onFocus}
     />
+  );
+};
+
+export const inputWithIcon = () => {
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  }, []);
+
+  return (
+    <div>
+      <Input
+        onChange={onChange}
+        value={value}
+        width="30%"
+        label="input with Icon"
+        icon={<Icon icon="downArrow" />}
+      />
+      <br />
+      <Input
+        variant="underline"
+        onChange={onChange}
+        value={value}
+        width="30%"
+        label="input with Icon"
+        icon={<Icon icon="heart" />}
+      />
+      <br />
+      <Input
+        variant="outline"
+        onChange={onChange}
+        value={value}
+        width="30%"
+        label="input with Icon"
+        icon={<Icon icon="exit" />}
+      />
+      <br />
+      <Input
+        onChange={onChange}
+        value={value}
+        width="30%"
+        label="input with Icon"
+        disabled
+        icon={<Icon icon="downArrow" />}
+      />
+      <br />
+      <Input
+        variant="underline"
+        onChange={onChange}
+        value={value}
+        width="30%"
+        label="input with Icon"
+        disabled
+        icon={<Icon icon="heart" />}
+      />
+      <br />
+      <Input
+        variant="outline"
+        onChange={onChange}
+        value={value}
+        width="30%"
+        label="input with Icon"
+        disabled
+        icon={<Icon icon="exit" />}
+      />
+    </div>
+  );
+};
+
+export const CustomStyleInput = () => {
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  }, []);
+
+  const customStyle = css`
+    cursor: pointer;
+    background: #fab !important;
+
+    & ~ label {
+      cursor: pointer;
+      background-color: transparent !important;
+    }
+
+    & ~ div.icon-wrapper {
+      color: yellow;
+    }
+  `;
+
+  return (
+    <div>
+      <Input
+        onChange={onChange}
+        value={value}
+        width="30%"
+        label="Custom style"
+        icon={<Icon icon="downArrow" />}
+        css={customStyle}
+      />
+      <br />
+      <Input
+        variant="underline"
+        onChange={onChange}
+        value={value}
+        width="30%"
+        label="Custom style"
+        icon={<Icon icon="heart" />}
+        css={customStyle}
+      />
+      <br />
+      <Input
+        variant="outline"
+        onChange={onChange}
+        value={value}
+        width="30%"
+        label="Custom style"
+        icon={<Icon icon="exit" />}
+        css={customStyle}
+      />
+    </div>
   );
 };

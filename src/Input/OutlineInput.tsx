@@ -11,9 +11,13 @@ function OutlineInput(props: InputProps) {
       number={props.color === Color.GRAY ? 7 : 5}
       width={props.width ? props.width : '100%'}
       disabled={props.disabled}
+      icon={props.icon}
     >
-      <input {...props} title={props.label} placeholder=" " />
+      <input {...props} title={props.label} placeholder=" " css={props.css} />
       <label>{props.label}</label>
+      <div className="icon-wrapper" onClick={props.onClick}>
+        {props.icon && props.icon}
+      </div>
     </StyledInput>
   );
 }
@@ -29,6 +33,8 @@ const StyledInput = styled.div`
     border: 1px solid ${palette.gray[7]};
     border-radius: 4px;
     padding: 0 0.75rem 0 0.75rem;
+
+    ${(props: StyledInputProps) => props.icon && `padding-right: 2.5rem`};
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
@@ -86,6 +92,19 @@ const StyledInput = styled.div`
     transition: all 0.2s ease;
     background-color: #ffffff;
     padding: 0 0.5rem 0 0.5rem;
+  }
+
+  & > div.icon-wrapper {
+    height: 100%;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: ${(props: StyledInputProps) =>
+      props.disabled ? palette.gray[5] : palette.gray[7]};
+  }
+
+  & > input:focus ~ div.icon-wrapper {
+    color: ${(props: StyledInputProps) => palette[props.color][props.number]};
   }
 `;
 
