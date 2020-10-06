@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import { ChangeEvent, useCallback, useState } from 'react';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 import Color from '../styles/colors/Color';
 import Select from './Select';
 
@@ -24,6 +24,8 @@ const selectWrapperStyle = css`
 export const myselect = () => {
   const label = text('label', 'Name');
   const variant = select('variant', ['basic', 'underline', 'outline'], 'basic');
+  const disabled = boolean('disabled', false);
+  const width = text('width', '');
   const color = select(
     'color',
     [
@@ -61,6 +63,8 @@ export const myselect = () => {
         variant={variant}
         color={color}
         label={label}
+        width={width}
+        disabled={disabled}
       />
     </div>
   );

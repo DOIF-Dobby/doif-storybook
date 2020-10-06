@@ -41,20 +41,20 @@ function Check(props: CheckProps) {
       disabled={props.disabled}
     >
       {props.data.map((d) => {
-        const isChecking = props.value.includes(d.code);
+        const isChecked = props.value.includes(d.code);
 
         return (
           <label key={d.code}>
             <input
               type="checkbox"
               name={props.name}
-              checked={isChecking}
+              checked={isChecked}
               data-code={d.code}
               disabled={props.disabled}
               onChange={props.onChange}
             />
-            <div className={`checkbox ${isChecking && 'checking'}`}>
-              <div className={isChecking ? 'checking' : ''}></div>
+            <div className={`checkbox ${isChecked && 'checked'}`}>
+              <div className={isChecked ? 'checked' : ''}></div>
             </div>
             <span>{d.name}</span>
           </label>
@@ -96,7 +96,7 @@ const StyledCheck = styled.div`
       margin-right: 0.3rem;
       position: relative;
 
-      &.checking {
+      &.checked {
         background: ${(props: StyledCheckProps) =>
           props.disabled
             ? palette.gray[5]
@@ -104,7 +104,7 @@ const StyledCheck = styled.div`
         border: none;
       }
 
-      & > div.checking {
+      & > div.checked {
         position: absolute;
         top: 0.2rem;
         left: 0.25rem;

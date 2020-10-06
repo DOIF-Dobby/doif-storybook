@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import Check from './Check';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 import Color from '../styles/colors/Color';
 import { ChangeEvent, useCallback, useState } from 'react';
 
@@ -12,6 +12,7 @@ export default {
 };
 
 export const check = () => {
+  const disabled = boolean('disabled', false);
   const color = select(
     'color',
     [
@@ -60,7 +61,15 @@ export const check = () => {
     );
   }, []);
 
-  return <Check data={data} onChange={onChange} value={value} color={color} />;
+  return (
+    <Check
+      data={data}
+      onChange={onChange}
+      value={value}
+      color={color}
+      disabled={disabled}
+    />
+  );
 };
 
 check.story = {

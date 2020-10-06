@@ -4,6 +4,7 @@ import { ChangeEvent, MouseEvent, useCallback, useState } from 'react';
 import Button from '../Button/Button';
 import Check from '../Check/Check';
 import Input from '../Input/Input';
+import Radio from '../Radio/Radio';
 import Select from '../Select/Select';
 import Sample from './Sample';
 
@@ -40,6 +41,8 @@ export const sample = () => {
     selectValue2: '',
     checkValue1: [],
     checkValue2: [],
+    radioValue1: '',
+    radioValue2: '',
   });
 
   const {
@@ -50,6 +53,8 @@ export const sample = () => {
     selectValue2,
     checkValue1,
     checkValue2,
+    radioValue1,
+    radioValue2,
   } = values;
 
   /** input, selectbox Change 함수 */
@@ -147,6 +152,20 @@ export const sample = () => {
           value={checkValue2}
           name="checkValue2"
           onChange={onChangeCheck}
+        />
+        <br />
+        <Radio
+          data={data}
+          value={radioValue1}
+          name="radioValue1"
+          onChange={onChange}
+        />
+        <br />
+        <Radio
+          data={data}
+          value={radioValue2}
+          name="radioValue2"
+          onChange={onChange}
         />
         <br />
         <Button onClick={onClick}>버튼</Button>
