@@ -82,7 +82,7 @@ const StyledInput = styled.div`
           cursor: default;
         }
         &::after {
-          color: ${palette.gray[4]};
+          color: ${palette.gray[5]};
         }
       `;
     }
@@ -99,11 +99,11 @@ const StyledInput = styled.div`
     color: ${(props: StyledInputProps) => palette[props.color][props.number]};
   }
   & > input:disabled {
-    border-bottom: 1px solid ${palette.gray[4]};
-    color: ${palette.gray[4]};
+    border-bottom: 1px solid ${palette.gray[5]};
+    color: ${palette.gray[5]};
   }
   & > input:disabled ~ label {
-    color: ${palette.gray[4]};
+    color: ${palette.gray[5]};
   }
 
   & > label {

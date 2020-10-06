@@ -66,3 +66,33 @@ export const check = () => {
 check.story = {
   name: 'Default',
 };
+
+export const disabledCheck = () => {
+  const data = [
+    {
+      code: 'A',
+      name: '안녕하세요',
+    },
+    {
+      code: 'B',
+      name: '반갑습니다',
+    },
+    {
+      code: 'C',
+      name: '또 만나요',
+    },
+  ];
+
+  const [value, setValue] = useState(['B']);
+
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const code = e.target.dataset.code;
+    const checked = e.target.checked;
+
+    setValue((value) =>
+      checked ? value.concat(code) : value.filter((val) => val !== code)
+    );
+  }, []);
+
+  return <Check data={data} onChange={onChange} value={value} disabled />;
+};

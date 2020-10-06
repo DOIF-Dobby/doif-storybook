@@ -13,6 +13,8 @@ interface CheckProps {
   name?: string;
   /** check box의 색을 정합니다. */
   color: Color;
+  /** check box를 비활성화 시킵니다. */
+  disabled: boolean;
   /** check box를 변경했을 때 트리거되는 함수입니다. */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -20,6 +22,7 @@ interface CheckProps {
 interface StyledCheckProps {
   color: Color;
   number: number;
+  disabled: boolean;
 }
 
 interface CheckedProps {
@@ -34,7 +37,9 @@ function Check(props: CheckProps) {
   return (
     <StyledCheck
       color={props.color}
-      number={props.color === Color.GRAY ? 7 : 5}>
+      number={props.color === Color.GRAY ? 7 : 5}
+      disabled={props.disabled}
+    >
       {props.data.map((d) => {
         const isChecking = props.value.includes(d.code);
 
@@ -45,6 +50,7 @@ function Check(props: CheckProps) {
               name={props.name}
               checked={isChecking}
               data-code={d.code}
+              disabled={props.disabled}
               onChange={props.onChange}
             />
             <div className={`checkbox ${isChecking && 'checking'}`}>
@@ -60,6 +66,7 @@ function Check(props: CheckProps) {
 
 Check.defaultProps = {
   color: Color.VIOLET,
+  disabled: false,
 };
 
 const StyledCheck = styled.div`
@@ -73,7 +80,7 @@ const StyledCheck = styled.div`
     margin-right: 0.5rem;
 
     &:hover {
-      cursor: pointer;
+      ${(props: StyledCheckProps) => !props.disabled && `cursor: pointer`};
     }
 
     & > input[type='checkbox'] {
@@ -81,16 +88,19 @@ const StyledCheck = styled.div`
     }
 
     & > div.checkbox {
-      border: 1px solid ${palette.gray[7]};
+      border: ${(props: StyledCheckProps) =>
+        `2px solid ${props.disabled ? palette.gray[5] : palette.gray[7]}`};
       border-radius: 4px;
       width: 1.2rem;
       height: 1.2rem;
-      margin-right: 0.2rem;
+      margin-right: 0.3rem;
       position: relative;
 
       &.checking {
         background: ${(props: StyledCheckProps) =>
-          palette[props.color][props.number]};
+          props.disabled
+            ? palette.gray[5]
+            : palette[props.color][props.number]};
         border: none;
       }
 
@@ -106,6 +116,12 @@ const StyledCheck = styled.div`
 
         transform: rotate(-45deg);
       }
+    }
+
+    & > span {
+      line-height: 1.2rem;
+      ${(props: StyledCheckProps) =>
+        props.disabled && `color: ${palette.gray[5]}`};
     }
   }
 `;

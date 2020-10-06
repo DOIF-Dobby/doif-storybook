@@ -79,7 +79,7 @@ const StyledInput = styled.div`
           cursor: default;
         }
         &::after {
-          color: ${palette.gray[4]};
+          color: ${palette.gray[5]};
         }
       `;
     }
@@ -92,11 +92,11 @@ const StyledInput = styled.div`
   }
   & > input:disabled {
     background-color: #fff;
-    border: 1px solid ${palette.gray[4]};
-    color: ${palette.gray[4]};
+    border: 1px solid ${palette.gray[5]};
+    color: ${palette.gray[5]};
 
     &::placeholder {
-      color: ${palette.gray[4]};
+      color: ${palette.gray[5]};
     }
   }
 `;
