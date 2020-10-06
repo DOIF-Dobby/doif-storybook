@@ -124,7 +124,6 @@ function Select(props: SelectProps) {
         color={props.color}
         onClick={onClick}
         value={codeName}
-        isSelect
         readOnly
         disabled={props.disabled}
       />
