@@ -11,12 +11,13 @@ function UnderlineInput(props: InputProps) {
       number={props.color === Color.GRAY ? 7 : 5}
       width={props.width ? props.width : '100%'}
       disabled={props.disabled}
-      icon={props.icon}
-    >
+      icon={props.icon}>
       <input {...props} title={props.label} placeholder=" " css={props.css} />
       <div className="underline"></div>
       <label>{props.label}</label>
-      <div className="icon-wrapper" onClick={props.onClick}>
+      <div
+        className="icon-wrapper"
+        onClick={props.disabled ? undefined : props.onClick}>
         {props.icon && props.icon}
       </div>
     </StyledInput>
@@ -116,6 +117,8 @@ const StyledInput = styled.div`
     right: 0.5rem;
     color: ${(props: StyledInputProps) =>
       props.disabled ? palette.gray[5] : palette.gray[7]};
+
+    cursor: ${(props: StyledInputProps) => props.disabled && 'default'};
   }
 
   & > input:focus ~ div.icon-wrapper {

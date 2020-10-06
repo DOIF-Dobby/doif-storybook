@@ -11,15 +11,16 @@ function BasicInput(props: InputProps) {
       number={props.color === Color.GRAY ? 7 : 5}
       width={props.width ? props.width : '100%'}
       disabled={props.disabled}
-      icon={props.icon}
-    >
+      icon={props.icon}>
       <input
         {...props}
         title={props.label}
         placeholder={props.label}
         css={props.css}
       />
-      <div className="icon-wrapper" onClick={props.onClick}>
+      <div
+        className="icon-wrapper"
+        onClick={props.disabled ? undefined : props.onClick}>
         {props.icon && props.icon}
       </div>
     </StyledInput>

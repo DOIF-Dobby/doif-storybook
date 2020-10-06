@@ -57,7 +57,7 @@ export const sample = () => {
     radioValue2,
   } = values;
 
-  /** input, selectbox Change 함수 */
+  /** input, selectbox, radiobox Change 함수 */
   const onChange = useCallback(
     (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
@@ -102,6 +102,7 @@ export const sample = () => {
           name="selectValue1"
           variant="outline"
           label="select1"
+          width="30%"
           onChange={onChange}
         />
         <br />
@@ -112,6 +113,7 @@ export const sample = () => {
           name="selectValue2"
           variant="outline"
           label="select2"
+          width="30%"
           onChange={onChange}
         />
         <br />
@@ -120,6 +122,7 @@ export const sample = () => {
           name="inputValue1"
           variant="outline"
           label="input1"
+          width="30%"
           onChange={onChange}
         />
         <br />
@@ -128,6 +131,7 @@ export const sample = () => {
           name="inputValue2"
           variant="outline"
           label="input2"
+          width="30%"
           onChange={onChange}
         />
         <br />
@@ -136,6 +140,7 @@ export const sample = () => {
           name="inputValue3"
           variant="underline"
           label="input3"
+          width="30%"
           onChange={onChange}
         />
         <br />
@@ -164,6 +169,7 @@ export const sample = () => {
           data={data}
           value={radioValue2}
           name="radioValue2"
+          defVal={{ code: '', name: '선택없음' }}
           onChange={onChange}
         />
         <br />
