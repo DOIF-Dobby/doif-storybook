@@ -43,7 +43,8 @@ function Button(props: ButtonProps) {
         sizes[props.size],
         { width: props.width },
         props.iconOnly && [iconOnlyStyle, iconOnlySizes[props.size]],
-      ]}>
+      ]}
+    >
       <span className="contents-style">{props.children}</span>
     </StyledButton>
   );
@@ -150,7 +151,7 @@ const StyledButton = styled.button`
 
 const iconOnlyStyle = css`
   padding: 0;
-  border-radius: 50%;
+  border-radius: 4px;
   svg {
     margin: 0;
   }
