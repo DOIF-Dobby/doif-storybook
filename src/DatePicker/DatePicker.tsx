@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { forwardRef, memo } from 'react';
+import { forwardRef } from 'react';
 import ReactDatePicker, {
   registerLocale,
   ReactDatePickerProps,
@@ -36,4 +36,4 @@ DatePicker.defaultProps = {
   color: Color.VIOLET,
 };
 
-export default memo(DatePicker);
+export default DatePicker;

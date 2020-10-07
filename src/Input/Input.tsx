@@ -4,7 +4,6 @@ import Color from '../styles/colors/Color';
 import OutlineInput from './OutlineInput';
 import BasicInput from './BasicInput';
 import UnderlineInput from './UnderlineInput';
-import { memo } from 'react';
 
 export interface InputProps
   extends React.DetailedHTMLProps<
@@ -55,4 +54,4 @@ Input.defaultProps = {
   type: 'text',
 };
 
-export default memo(Input);
+export default Input;

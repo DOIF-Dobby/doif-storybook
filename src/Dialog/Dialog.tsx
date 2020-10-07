@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Fragment, memo } from 'react';
+import { Fragment } from 'react';
 import { css, jsx } from '@emotion/core';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Button from '../Button/Button';
@@ -120,4 +120,4 @@ const whiteBox = css`
   }
 `;
 
-export default memo(Dialog);
+export default Dialog;

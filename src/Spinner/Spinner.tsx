@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { memo } from 'react';
 import Color from '../styles/colors/Color';
 import BasicSpinner from './BasicSpinner';
 import CubeSpinner from './CubeSpinner';
@@ -36,4 +35,4 @@ Spinner.defaultProps = {
   zIndex: 1010,
 };
 
-export default memo(Spinner);
+export default Spinner;

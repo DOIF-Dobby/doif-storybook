@@ -1,14 +1,41 @@
+import { memo } from 'react';
+import DatePicker from './DatePicker/DatePicker';
+import Button from './Button/Button';
+import ButtonGroup from './ButtonGroup/ButtonGroup';
+import Dialog from './Dialog/Dialog';
+import Icon from './Icon/Icon';
+import DarkLayer from './DarkLayer/DarkLayer';
+import Spinner from './Spinner/Spinner';
+import Input from './Input/Input';
+import Select from './Select/Select';
+import Check from './Check/Check';
+import Radio from './Radio/Radio';
+
+// memoization 한 후에 export
+const MemoButton = memo(Button);
+const MemoButtonGroup = memo(ButtonGroup);
+const MemoDialog = memo(Dialog);
+const MemoIcon = memo(Icon);
+const MemoDarkLayer = memo(DarkLayer);
+const MemoSpinner = memo(Spinner);
+const MemoInput = memo(Input);
+const MemoSelect = memo(Select);
+const MemoCheck = memo(Check);
+const MemoRadio = memo(Radio);
+const MemoDatePicker = memo(DatePicker);
+
 /** component */
-export { default as Button } from './Button/Button';
-export { default as ButtonGroup } from './ButtonGroup/ButtonGroup';
-export { default as Dialog } from './Dialog/Dialog';
-export { default as Icon } from './Icon/Icon';
-export { default as DarkLayer } from './DarkLayer/DarkLayer';
-export { default as Spinner } from './Spinner/Spinner';
-export { default as Input } from './Input/Input';
-export { default as Select } from './Select/Select';
-export { default as Check } from './Check/Check';
-export { default as Radio } from './Radio/Radio';
+export { MemoButton as Button };
+export { MemoButtonGroup as ButtonGroup };
+export { MemoDialog as Dialog };
+export { MemoIcon as Icon };
+export { MemoDarkLayer as DarkLayer };
+export { MemoSpinner as Spinner };
+export { MemoInput as Input };
+export { MemoSelect as Select };
+export { MemoCheck as Check };
+export { MemoRadio as Radio };
+export { MemoDatePicker as DatePicker };
 
 /** enum */
 export { default as Color } from './styles/colors/Color';

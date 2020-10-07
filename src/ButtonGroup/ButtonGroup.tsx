@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { memo } from 'react';
 
 interface ButtonGroupProps {
   /** 버튼을 보여줄 방향 */
@@ -61,4 +60,4 @@ const rightAlignStyle = css`
   justify-content: flex-end;
 `;
 
-export default memo(ButtonGroup);
+export default ButtonGroup;

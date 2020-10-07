@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import React, {
   ChangeEvent,
-  memo,
   RefObject,
   useCallback,
   useRef,
@@ -260,4 +259,4 @@ Select.defaultProps = {
   disabled: false,
 };
 
-export default memo(Select);
+export default Select;

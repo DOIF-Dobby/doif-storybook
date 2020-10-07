@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { memo } from 'react';
 import * as icons from '../icons/svg';
 
 type IconType = keyof typeof icons;
@@ -33,4 +32,4 @@ function Icon({ icon, color, size, className }: IconProps) {
   );
 }
 
-export default memo(Icon);
+export default Icon;
