@@ -1,12 +1,21 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { ChangeEvent, MouseEvent, useCallback, useState } from 'react';
+import {
+  ChangeEvent,
+  FormEvent,
+  MouseEvent,
+  SyntheticEvent,
+  useCallback,
+  useState,
+} from 'react';
 import Button from '../Button/Button';
 import Check from '../Check/Check';
+import DatePicker from '../DatePicker/DatePicker';
 import Input from '../Input/Input';
 import Radio from '../Radio/Radio';
 import Select from '../Select/Select';
 import Sample from './Sample';
+import moment from 'moment';
 
 export default {
   title: 'Sample/Sample',
@@ -33,7 +42,7 @@ export const sample = () => {
     name: '선택없음',
   };
 
-  const [values, setValues] = useState({
+  const initValues: { [index: string]: any } = {
     inputValue1: '',
     inputValue2: '',
     inputValue3: '',
@@ -43,7 +52,11 @@ export const sample = () => {
     checkValue2: [],
     radioValue1: '',
     radioValue2: '',
-  });
+    startDate: '',
+    endDate: '',
+  };
+
+  const [values, setValues] = useState(initValues);
 
   const {
     inputValue1,
@@ -55,6 +68,8 @@ export const sample = () => {
     checkValue2,
     radioValue1,
     radioValue2,
+    startDate,
+    endDate,
   } = values;
 
   /** input, selectbox, radiobox Change 함수 */
@@ -82,9 +97,20 @@ export const sample = () => {
     }));
   }, []);
 
+  /** datepicker Change 함수 */
+  const onChangeDate = useCallback(
+    (date: Date, e: ChangeEvent<HTMLInputElement>, name: string) => {
+      setValues((values) => ({
+        ...values,
+        [name]: moment(date).format('YYYY-MM-DD'),
+      }));
+    },
+    []
+  );
+
   /** 버튼 클릭시 values log 찍음 */
-  const onClick = useCallback(
-    (e: MouseEvent<HTMLButtonElement>) => {
+  const onSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
       console.log(values);
@@ -94,7 +120,7 @@ export const sample = () => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={onSubmit}>
         <Select
           data={data}
           value={selectValue1}
@@ -144,6 +170,14 @@ export const sample = () => {
           onChange={onChange}
         />
         <br />
+        <DatePicker
+          value={startDate}
+          onChange={onChangeDate}
+          name="startDate"
+        />
+        <br />
+        <DatePicker value={endDate} onChange={onChangeDate} name="endDate" />
+        <br />
         <Check
           data={data}
           value={checkValue1}
@@ -173,7 +207,7 @@ export const sample = () => {
           onChange={onChange}
         />
         <br />
-        <Button onClick={onClick}>버튼</Button>
+        <Button>버튼</Button>
       </form>
     </div>
   );

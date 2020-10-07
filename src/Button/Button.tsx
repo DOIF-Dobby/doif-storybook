@@ -131,7 +131,7 @@ const StyledButton = styled.button`
         `;
       case 'text':
         return `
-          background-color: white;
+          background-color: transparent;
           color: ${palette[props.color][colorNumber]};
           border: none;
           &:hover:enabled {

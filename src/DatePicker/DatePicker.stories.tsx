@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { forwardRef, useCallback, useState } from 'react';
+import { forwardRef, SyntheticEvent, useCallback, useState } from 'react';
 import Color from '../styles/colors/Color';
 import DatePicker from './DatePicker';
 import Input from '../Input/Input';
@@ -18,7 +18,7 @@ const wrapperStyle = css`
 export const datePicker = () => {
   const [startDate, setStartDate] = useState(new Date());
 
-  const onChange = useCallback((date) => {
+  const onChange = useCallback((date, e: SyntheticEvent<any, Event>) => {
     setStartDate(date);
   }, []);
 
