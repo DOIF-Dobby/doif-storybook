@@ -106,10 +106,6 @@ const StyledButton = styled.button`
           &:active {
             & > span.contents-style {
               text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-
-              & > svg {
-                // stroke: black;
-              }
             }
           }
         `;
@@ -135,11 +131,11 @@ const StyledButton = styled.button`
           color: ${palette[props.color][colorNumber]};
           border: none;
           &:hover:enabled {
-            background-color: ${palette[props.color][0]}};
+            color: ${palette[props.color][colorNumber + 1]}};
             transition: all 0.15s;
           }
           &:active:enabled {
-            background-color: ${palette[props.color][1]}};
+            color: ${palette[props.color][colorNumber + 2]}};
           }
           &:disabled {
             opacity: 0.4;
