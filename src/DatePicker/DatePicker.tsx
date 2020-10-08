@@ -10,7 +10,6 @@ import 'react-datepicker/dist/react-datepicker.min.css';
 import Input from '../Input/Input';
 import Color from '../styles/colors/Color';
 import Icon from '../Icon/Icon';
-import moment from 'moment';
 import { getMonth, getYear } from 'date-fns';
 import Button from '../Button/Button';
 import styled from '@emotion/styled';
