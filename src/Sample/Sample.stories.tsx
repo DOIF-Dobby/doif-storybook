@@ -281,7 +281,7 @@ export const useCustomHookSample = () => {
     resetInput();
     resetDate();
     resetCheck();
-  }, []);
+  }, [resetInput, resetDate, resetCheck]);
 
   return (
     <div>
