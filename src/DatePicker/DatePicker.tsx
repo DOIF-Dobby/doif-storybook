@@ -13,6 +13,7 @@ import Icon from '../Icon/Icon';
 import { getMonth, getYear } from 'date-fns';
 import Button from '../Button/Button';
 import styled from '@emotion/styled';
+import palette from '../styles/colors/palette';
 
 interface DatePickerProps extends ReactDatePickerProps {
   onChange: (
@@ -36,15 +37,19 @@ function DatePicker(props: DatePickerProps) {
     props.onChange(date, event, props.name);
   };
 
+  const date = props.value ? new Date(props.value) : props.selected;
+
   return (
-    <div>
+    <DatePickerContainer>
       <ReactDatePicker
         {...props}
-        selected={props.value ? new Date(props.value) : props.selected}
+        selected={date}
         onChange={nameOnChange}
-        dateFormat="yyyy-MM-dd"
-        locale="ko"
+        dateFormat={props.dateFormat ? props.dateFormat : 'yyyy-MM-dd'}
+        locale={props.locale ? props.locale : 'ko'}
         customInput={props.customInput ? props.customInput : <DefaultInput />}
+        className="custom-date-picker"
+        calendarClassName="custom-calendar"
         renderCustomHeader={({
           date,
           prevMonthButtonDisabled,
@@ -55,7 +60,7 @@ function DatePicker(props: DatePickerProps) {
           <CustomHeader>
             <Button
               variant="text"
-              color={Color.GRAY}
+              color={Color.WHITE}
               size="small"
               className="btn_month btn_month-prev"
               onClick={decreaseMonth}
@@ -71,7 +76,7 @@ function DatePicker(props: DatePickerProps) {
 
             <Button
               variant="text"
-              color={Color.GRAY}
+              color={Color.WHITE}
               size="small"
               className="btn_month btn_month-next"
               onClick={increaseMonth}
@@ -83,7 +88,7 @@ function DatePicker(props: DatePickerProps) {
           </CustomHeader>
         )}
       />
-    </div>
+    </DatePickerContainer>
   );
 }
 
@@ -95,9 +100,37 @@ const CustomHeader = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background: ${palette.gray[7]};
+  color: #fff;
 
   & > div.month-day {
     font-size: 1rem;
+  }
+`;
+
+const DatePickerContainer = styled.div`
+  & .custom-date-picker {
+    border: 3px soild blue;
+  }
+
+  & .custom-calendar {
+    border: none;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+
+    .react-datepicker__triangle {
+      border-bottom-color: ${palette.gray[7]};
+
+      &::before {
+        /* border-bottom-color: ${palette.gray[7]}; */
+      }
+    }
+    .react-datepicker__day-names {
+      background: ${palette.gray[7]};
+
+      .react-datepicker__day-name {
+        color: #fff;
+      }
+    }
   }
 `;
 

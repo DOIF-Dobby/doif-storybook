@@ -28,8 +28,9 @@ export default {
     svgr(), // SVG를 컴포넌트로 사용 할 수 있게 해줌.
     terser(), // build 결과물 난독화
     postcss({
+      // 사용된 css를 뽑아서 `datepicker.css` 파일로 추출한다. 라이브러리를 사용하는 쪽에선 App.tsx에 imprt 'doif-react-uikit/dist/datepicker.css' 해서 사용한다.
       plugins: [],
-      extract: 'doif-react-uikit.min.css',
+      extract: 'datepicker.css',
     }),
   ],
   output: [

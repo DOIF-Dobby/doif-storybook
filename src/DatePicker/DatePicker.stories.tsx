@@ -15,6 +15,9 @@ const wrapperStyle = css`
   height: 300px;
 `;
 
+/**
+ * Default
+ */
 export const datePicker = () => {
   const [startDate, setStartDate] = useState(new Date());
 
@@ -29,6 +32,9 @@ export const datePicker = () => {
   );
 };
 
+/**
+ * Custom Input
+ */
 export const customInputDatePicker = () => {
   const [startDate, setStartDate] = useState(new Date());
 
