@@ -5,10 +5,8 @@ import pkg from './package.json';
 import svgr from '@svgr/rollup';
 import url from 'rollup-plugin-url';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
-// import cssimport from 'postcss-import';
-// import autoprefixer from 'autoprefixer';
+import css from 'rollup-plugin-css-porter';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']; // 어떤 확장자를 처리 할 지 정함
 
@@ -27,10 +25,8 @@ export default {
     babel({ extensions, include: ['src/**/*'], runtimeHelpers: true }), // Babel을 사용 할 수 있게 해줌
     url(), // 미디어 파일을 dataURI 형태로 불러와서 사용 할 수 있게 해줌.
     svgr(), // SVG를 컴포넌트로 사용 할 수 있게 해줌.
-    postcss({
-      plugins: [],
-    }),
-    terser(),
+    // terser(), // build 결과물 난독화
+    css(),
   ],
   output: [
     {
