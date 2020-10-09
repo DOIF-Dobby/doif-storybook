@@ -9,10 +9,10 @@ import Radio from '../Radio/Radio';
 import Select from '../Select/Select';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Sample from './Sample';
-import moment from 'moment';
 import useChange from '../hooks/useChange';
 import useChangeDate from '../hooks/useChangeDate';
 import useChangeCheck from '../hooks/useChangeCheck';
+import * as DateUtil from '../libs/DateUtil';
 
 export default {
   title: 'Sample/Sample',
@@ -99,7 +99,7 @@ export const sample = () => {
     (date: Date, e: ChangeEvent<HTMLInputElement>, name: string) => {
       setValues((values) => ({
         ...values,
-        [name]: moment(date).format('YYYY-MM-DD'),
+        [name]: date,
       }));
     },
     []
@@ -168,12 +168,18 @@ export const sample = () => {
         />
         <br />
         <DatePicker
-          value={startDate}
+          selected={startDate}
           onChange={onChangeDate}
           name="startDate"
+          width="30%"
         />
         <br />
-        <DatePicker value={endDate} onChange={onChangeDate} name="endDate" />
+        <DatePicker
+          selected={endDate}
+          onChange={onChangeDate}
+          name="endDate"
+          width="30%"
+        />
         <br />
         <Check
           data={data}
@@ -272,7 +278,9 @@ export const useCustomHookSample = () => {
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      console.log({ ...inputForm, ...dateForm, ...checkForm });
+      const transDateForm = DateUtil.mapDateString(dateForm);
+
+      console.log({ ...inputForm, ...transDateForm, ...checkForm });
     },
     [inputForm, dateForm, checkForm]
   );
@@ -336,12 +344,18 @@ export const useCustomHookSample = () => {
         />
         <br />
         <DatePicker
-          value={startDate}
+          selected={startDate}
           onChange={onChangeDate}
           name="startDate"
+          width="30%"
         />
         <br />
-        <DatePicker value={endDate} onChange={onChangeDate} name="endDate" />
+        <DatePicker
+          selected={endDate}
+          onChange={onChangeDate}
+          name="endDate"
+          width="30%"
+        />
         <br />
         <Check
           data={data}
@@ -374,8 +388,11 @@ export const useCustomHookSample = () => {
         <br />
         <ButtonGroup>
           <Button>버튼</Button>
-          <Button variant="text" onClick={onReset}>
+          <Button variant="text" onClick={onReset} type="reset">
             초기화
+          </Button>
+          <Button variant="outline" type="reset">
+            그냥 버튼
           </Button>
         </ButtonGroup>
       </form>

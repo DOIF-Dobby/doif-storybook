@@ -42,5 +42,8 @@ export { default as useChange } from './hooks/useChange';
 export { default as useChangeDate } from './hooks/useChangeDate';
 export { default as useChangeCheck } from './hooks/useChangeCheck';
 
+/** lib */
+export * as DateUtil from './libs/DateUtil';
+
 /** enum */
 export { default as Color } from './styles/colors/Color';

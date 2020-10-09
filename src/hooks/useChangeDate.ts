@@ -3,14 +3,14 @@ import moment from 'moment';
 
 function reducer(
   state: any,
-  action: { type: string; name?: string; value?: string }
+  action: { type: string; name?: string; date?: Date }
 ) {
   switch (action.type) {
     case 'CHANGE':
       if (action.name) {
         return {
           ...state,
-          [action.name]: action.value,
+          [action.name]: action.date,
         };
       }
     case 'RESET':
@@ -26,14 +26,14 @@ function reducer(
   }
 }
 
-function useChangeDate(initForm: { [index: string]: string }) {
+function useChangeDate(initForm: { [index: string]: Date | '' }) {
   const [form, dispatch] = useReducer(reducer, initForm);
 
   /** date Change 함수 */
   const onChange = useCallback(
     (date: Date, e: ChangeEvent<HTMLInputElement>, name: string) => {
-      const value = moment(date).format('YYYY-MM-DD');
-      dispatch({ type: 'CHANGE', name, value });
+      // const value = moment(date).format('YYYY-MM-DD');
+      dispatch({ type: 'CHANGE', name, date });
     },
     []
   );
