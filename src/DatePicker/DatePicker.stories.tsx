@@ -1,6 +1,12 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { ChangeEvent, forwardRef, SyntheticEvent, useCallback, useState } from 'react';
+import {
+  ChangeEvent,
+  forwardRef,
+  SyntheticEvent,
+  useCallback,
+  useState,
+} from 'react';
 import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 import Color from '../styles/colors/Color';
 import DatePicker from './DatePicker';
@@ -87,10 +93,10 @@ export const rangeDatePicker = () => {
     endDate: new Date(),
   });
 
-  const {startDate, endDate} = dates;
+  const { startDate, endDate } = dates;
 
-   /** datepicker Change 함수 */
-   const onChangeDate = useCallback(
+  /** datepicker Change 함수 */
+  const onChangeDate = useCallback(
     (date: Date, e: ChangeEvent<HTMLInputElement>, name: string) => {
       setDates((dates) => ({
         ...dates,
@@ -101,12 +107,24 @@ export const rangeDatePicker = () => {
   );
 
   return (
-    <div css={{display: 'flex', height: '300px'}}>
-      <DatePicker selected={startDate} onChange={onChangeDate} maxDate={endDate} name="startDate" width="90%"/>
-      <DatePicker selected={endDate} onChange={onChangeDate} minDate={startDate} name="endDate" width="90%"/>
+    <div css={{ display: 'flex', height: '300px' }}>
+      <DatePicker
+        selected={startDate}
+        onChange={onChangeDate}
+        maxDate={endDate}
+        name="startDate"
+        width="90%"
+      />
+      <DatePicker
+        selected={endDate}
+        onChange={onChangeDate}
+        minDate={startDate}
+        name="endDate"
+        width="90%"
+      />
     </div>
-  )
-}
+  );
+};
 
 /**
  * Month Picker
@@ -116,10 +134,10 @@ export const monthPicker = () => {
     month: new Date(),
   });
 
-  const {month} = months;
+  const { month } = months;
 
-   /** datepicker Change 함수 */
-   const onChangeDate = useCallback(
+  /** datepicker Change 함수 */
+  const onChangeDate = useCallback(
     (date: Date, e: ChangeEvent<HTMLInputElement>, name: string) => {
       setMonths((dates) => ({
         ...dates,
@@ -131,7 +149,57 @@ export const monthPicker = () => {
 
   return (
     <div css={wrapperStyle}>
-      <DatePicker selected={month} onChange={onChangeDate} name="month" width="30%" showMonthYearPicker/>
+      <DatePicker
+        selected={month}
+        onChange={onChangeDate}
+        name="month"
+        width="30%"
+        showMonthYearPicker
+      />
     </div>
-  )
-}
+  );
+};
+
+/**
+ * Range Month Picker
+ */
+export const rangeMonthPicker = () => {
+  const [months, setMonths] = useState({
+    startMonth: new Date(),
+    endMonth: new Date(),
+  });
+
+  const { startMonth, endMonth } = months;
+
+  /** datepicker Change 함수 */
+  const onChangeDate = useCallback(
+    (date: Date, e: ChangeEvent<HTMLInputElement>, name: string) => {
+      setMonths((dates) => ({
+        ...dates,
+        [name]: date,
+      }));
+    },
+    []
+  );
+
+  return (
+    <div css={{ display: 'flex', height: '300px' }}>
+      <DatePicker
+        selected={startMonth}
+        onChange={onChangeDate}
+        name="startMonth"
+        width="90%"
+        showMonthYearPicker
+        maxDate={endMonth}
+      />
+      <DatePicker
+        selected={endMonth}
+        onChange={onChangeDate}
+        name="endMonth"
+        width="90%"
+        showMonthYearPicker
+        minDate={startMonth}
+      />
+    </div>
+  );
+};

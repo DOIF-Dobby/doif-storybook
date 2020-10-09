@@ -9,10 +9,10 @@ import Radio from '../Radio/Radio';
 import Select from '../Select/Select';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Sample from './Sample';
-import moment from 'moment';
 import useChange from '../hooks/useChange';
 import useChangeDate from '../hooks/useChangeDate';
 import useChangeCheck from '../hooks/useChangeCheck';
+import * as DateUtil from '../libs/DateUtil';
 
 export default {
   title: 'Sample/Sample',
@@ -174,7 +174,12 @@ export const sample = () => {
           width="30%"
         />
         <br />
-        <DatePicker selected={endDate} onChange={onChangeDate} name="endDate" width="30%" />
+        <DatePicker
+          selected={endDate}
+          onChange={onChangeDate}
+          name="endDate"
+          width="30%"
+        />
         <br />
         <Check
           data={data}
@@ -273,7 +278,9 @@ export const useCustomHookSample = () => {
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      console.log({ ...inputForm, ...dateForm, ...checkForm });
+      const transDateForm = DateUtil.mapDateString(dateForm);
+
+      console.log({ ...inputForm, ...transDateForm, ...checkForm });
     },
     [inputForm, dateForm, checkForm]
   );
@@ -337,13 +344,18 @@ export const useCustomHookSample = () => {
         />
         <br />
         <DatePicker
-          selected={startDate && new Date(startDate) }
+          selected={startDate}
           onChange={onChangeDate}
           name="startDate"
           width="30%"
         />
         <br />
-        <DatePicker selected={endDate && new Date(endDate)} onChange={onChangeDate} name="endDate" width="30%"/>
+        <DatePicker
+          selected={endDate}
+          onChange={onChangeDate}
+          name="endDate"
+          width="30%"
+        />
         <br />
         <Check
           data={data}

@@ -46,7 +46,11 @@ function DatePicker(props: DatePickerProps) {
     props.onChange(date, event, props.name);
   };
 
-  const dateFormat = props.dateFormat ? props.dateFormat : props.showMonthYearPicker ? 'yyyy-MM' : 'yyyy-MM-dd'
+  const dateFormat = props.dateFormat
+    ? props.dateFormat
+    : props.showMonthYearPicker
+    ? 'yyyy-MM'
+    : 'yyyy-MM-dd';
 
   return (
     <DatePickerContainer width={props.width ? props.width : '100%'}>
@@ -65,37 +69,47 @@ function DatePicker(props: DatePickerProps) {
           nextMonthButtonDisabled,
           decreaseMonth,
           increaseMonth,
+          prevYearButtonDisabled,
+          nextYearButtonDisabled,
+          increaseYear,
+          decreaseYear,
         }) => (
-            <CustomHeader>
-              <Button
-                variant="text"
-                color={Color.GRAY}
-                size="small"
-                onClick={decreaseMonth}
-                disabled={prevMonthButtonDisabled}
-                iconOnly
-                type="reset"
-              >
-                <Icon icon="leftArrow" />
-              </Button>
+          <CustomHeader>
+            <Button
+              variant="text"
+              color={Color.GRAY}
+              size="small"
+              onClick={props.showMonthYearPicker ? decreaseYear : decreaseMonth}
+              disabled={
+                props.showMonthYearPicker
+                  ? prevYearButtonDisabled
+                  : prevMonthButtonDisabled
+              }
+              iconOnly
+              type="reset">
+              <Icon icon="leftArrow" />
+            </Button>
 
-              <div className="month-day">
-                {getYear(date)}.{getMonth(date) + 1}
-              </div>
+            <div className="month-day">
+              {getYear(date)}.{getMonth(date) + 1}
+            </div>
 
-              <Button
-                variant="text"
-                color={Color.GRAY}
-                size="small"
-                onClick={increaseMonth}
-                disabled={nextMonthButtonDisabled}
-                iconOnly
-                type="reset"
-              >
-                <Icon icon="rightArrow" />
-              </Button>
-            </CustomHeader>
-          )}
+            <Button
+              variant="text"
+              color={Color.GRAY}
+              size="small"
+              onClick={props.showMonthYearPicker ? increaseYear : increaseMonth}
+              disabled={
+                props.showMonthYearPicker
+                  ? nextYearButtonDisabled
+                  : nextMonthButtonDisabled
+              }
+              iconOnly
+              type="reset">
+              <Icon icon="rightArrow" />
+            </Button>
+          </CustomHeader>
+        )}
       />
     </DatePickerContainer>
   );
@@ -121,7 +135,6 @@ const CustomHeader = styled.div`
 `;
 
 const DatePickerContainer = styled.div`
-
   /** wrapper class */
   & .custom-wrapper {
     display: block;
@@ -139,7 +152,7 @@ const DatePickerContainer = styled.div`
 
     /** picker 열면 보이는 삼각형  */
     .react-datepicker__triangle {
-      border-bottom-color:#fff;
+      border-bottom-color: #fff;
       left: 3rem !important;
 
       /** 삼각형 border */
@@ -229,8 +242,8 @@ const DatePickerContainer = styled.div`
 
       /** picker 달 이동시 선택된 날짜와 같은 날 */
       .react-datepicker__month-text--keyboard-selected {
-          background-color: #fff;
-          color: ${palette.gray[7]};
+        background-color: #fff;
+        color: ${palette.gray[7]};
       }
 
       /** 선택된 날 */
@@ -240,6 +253,15 @@ const DatePickerContainer = styled.div`
 
         &:hover {
           background-color: ${palette.gray[7]};
+        }
+      }
+
+      /** 선택불가능한 날 */
+      .react-datepicker__month--disabled {
+        color: ${palette.gray[5]};
+
+        &:hover {
+          background-color: #fff;
         }
       }
     }
