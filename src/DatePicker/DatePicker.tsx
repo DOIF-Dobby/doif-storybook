@@ -91,7 +91,9 @@ function DatePicker(props: DatePickerProps) {
             </Button>
 
             <div className="month-day">
-              {getYear(date)}.{getMonth(date) + 1}
+              {props.showMonthYearPicker
+                ? getYear(date)
+                : `${getYear(date)}.${getMonth(date) + 1} `}
             </div>
 
             <Button
