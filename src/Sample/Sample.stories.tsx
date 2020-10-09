@@ -12,7 +12,7 @@ import Sample from './Sample';
 import useChange from '../hooks/useChange';
 import useChangeDate from '../hooks/useChangeDate';
 import useChangeCheck from '../hooks/useChangeCheck';
-import * as DateUtil from '../libs/DateUtil';
+import DoifUtil from '../libs/DoifUtil';
 
 export default {
   title: 'Sample/Sample',
@@ -278,7 +278,7 @@ export const useCustomHookSample = () => {
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      const transDateForm = DateUtil.mapDateString(dateForm);
+      const transDateForm = DoifUtil.mapDateString(dateForm);
 
       console.log({ ...inputForm, ...transDateForm, ...checkForm });
     },
