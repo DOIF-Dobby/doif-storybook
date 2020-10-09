@@ -99,7 +99,7 @@ export const sample = () => {
     (date: Date, e: ChangeEvent<HTMLInputElement>, name: string) => {
       setValues((values) => ({
         ...values,
-        [name]: moment(date).format('YYYY-MM-DD'),
+        [name]: date,
       }));
     },
     []
@@ -168,12 +168,13 @@ export const sample = () => {
         />
         <br />
         <DatePicker
-          value={startDate}
+          selected={startDate}
           onChange={onChangeDate}
           name="startDate"
+          width="30%"
         />
         <br />
-        <DatePicker value={endDate} onChange={onChangeDate} name="endDate" />
+        <DatePicker selected={endDate} onChange={onChangeDate} name="endDate" width="30%" />
         <br />
         <Check
           data={data}
@@ -336,12 +337,13 @@ export const useCustomHookSample = () => {
         />
         <br />
         <DatePicker
-          value={startDate}
+          selected={startDate && new Date(startDate) }
           onChange={onChangeDate}
           name="startDate"
+          width="30%"
         />
         <br />
-        <DatePicker value={endDate} onChange={onChangeDate} name="endDate" />
+        <DatePicker selected={endDate && new Date(endDate)} onChange={onChangeDate} name="endDate" width="30%"/>
         <br />
         <Check
           data={data}
@@ -374,8 +376,11 @@ export const useCustomHookSample = () => {
         <br />
         <ButtonGroup>
           <Button>버튼</Button>
-          <Button variant="text" onClick={onReset}>
+          <Button variant="text" onClick={onReset} type="reset">
             초기화
+          </Button>
+          <Button variant="outline" type="reset">
+            그냥 버튼
           </Button>
         </ButtonGroup>
       </form>
