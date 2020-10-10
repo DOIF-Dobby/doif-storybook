@@ -35,11 +35,11 @@ interface CheckedProps {
 }
 
 /**
- * `Radio` 컴포넌트는 여러 개의 값들 중 하나를 선택할 때 사용합니다.
+ * `Radio` 컴포넌트는 여러 개의 값들 중 하나를 선택할 때 사용합니다. 가급적이면 `Radio` 컴포넌트는 필수 값에만 사용하고,
+ * 그렇지 않으면 `def Val Radio` 스토리를 참고하여 `Radio` 컴포넌트를 구성하세요.
  */
 function Radio(props: RadioProps) {
   const { defVal } = props;
-  let value = props.value;
   const newProps = Object.assign({}, props);
 
   delete newProps.defVal;
@@ -48,10 +48,6 @@ function Radio(props: RadioProps) {
     ? [defVal, ...props.data]
     : props.data;
 
-  if (!value) {
-    value = initData[0].code || '';
-  }
-
   return (
     <StyledRadio
       color={props.color}
@@ -59,7 +55,7 @@ function Radio(props: RadioProps) {
       disabled={props.disabled}
     >
       {initData.map((d) => {
-        const isChecked = value === d.code;
+        const isChecked = props.value === d.code;
 
         return (
           <label key={d.code}>

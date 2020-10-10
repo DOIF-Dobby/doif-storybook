@@ -79,7 +79,7 @@ export const sample = () => {
         [name]: value,
       }));
     },
-    []
+    [],
   );
 
   /** checkbox Change 함수 */
@@ -102,7 +102,7 @@ export const sample = () => {
         [name]: date,
       }));
     },
-    []
+    [],
   );
 
   /** 버튼 클릭시 values log 찍음 */
@@ -112,7 +112,7 @@ export const sample = () => {
 
       console.log(values);
     },
-    [values]
+    [values],
   );
 
   return (
@@ -282,7 +282,7 @@ export const useCustomHookSample = () => {
 
       console.log({ ...inputForm, ...transDateForm, ...checkForm });
     },
-    [inputForm, dateForm, checkForm]
+    [inputForm, dateForm, checkForm],
   );
 
   const onReset = useCallback(() => {

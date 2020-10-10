@@ -32,7 +32,7 @@ export const radio = () => {
       Color.GREEN,
       Color.YELLOW,
     ],
-    Color.VIOLET
+    Color.VIOLET,
   );
 
   const data = [
