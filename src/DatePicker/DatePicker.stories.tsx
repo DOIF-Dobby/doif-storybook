@@ -12,6 +12,7 @@ import Color from '../styles/colors/Color';
 import DatePicker from './DatePicker';
 import Input from '../Input/Input';
 import Icon from '../Icon/Icon';
+import { setHours, setMinutes } from 'date-fns';
 
 export default {
   title: 'components/DatePicker',
@@ -103,7 +104,7 @@ export const rangeDatePicker = () => {
         [name]: date,
       }));
     },
-    []
+    [],
   );
 
   return (
@@ -144,7 +145,7 @@ export const monthPicker = () => {
         [name]: date,
       }));
     },
-    []
+    [],
   );
 
   return (
@@ -179,7 +180,7 @@ export const rangeMonthPicker = () => {
         [name]: date,
       }));
     },
-    []
+    [],
   );
 
   return (
@@ -199,6 +200,77 @@ export const rangeMonthPicker = () => {
         width="90%"
         showMonthYearPicker
         minDate={startMonth}
+      />
+    </div>
+  );
+};
+
+/**
+ * Time Picker
+ */
+export const timePicker = () => {
+  const [times, setTimes] = useState({
+    time: new Date(),
+  });
+
+  const { time } = times;
+
+  /** datepicker Change 함수 */
+  const onChangeDate = useCallback(
+    (date: Date, e: ChangeEvent<HTMLInputElement>, name: string) => {
+      setTimes((dates) => ({
+        ...dates,
+        [name]: date,
+      }));
+    },
+    [],
+  );
+
+  return (
+    <div css={wrapperStyle}>
+      <DatePicker
+        selected={time}
+        onChange={onChangeDate}
+        name="time"
+        width="30%"
+        showTimeSelect
+        showTimeSelectOnly
+        timeIntervals={5}
+        injectTimes={[setHours(setMinutes(new Date(), 59), 23)]}
+      />
+    </div>
+  );
+};
+
+/**
+ * DateTime Picker
+ */
+export const dateTimePicker = () => {
+  const [dates, setDates] = useState({
+    date: new Date(),
+  });
+
+  const { date } = dates;
+
+  /** datepicker Change 함수 */
+  const onChangeDate = useCallback(
+    (date: Date, e: ChangeEvent<HTMLInputElement>, name: string) => {
+      setDates((dates) => ({
+        ...dates,
+        [name]: date,
+      }));
+    },
+    [],
+  );
+
+  return (
+    <div css={wrapperStyle}>
+      <DatePicker
+        selected={date}
+        onChange={onChangeDate}
+        name="date"
+        width="30%"
+        showTimeSelect
       />
     </div>
   );

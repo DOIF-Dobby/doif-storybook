@@ -24,7 +24,7 @@ interface DatePickerProps extends ReactDatePickerProps {
   onChange: (
     date: Date | null,
     event: SyntheticEvent<any> | undefined,
-    name?: string
+    name?: string,
   ) => void;
 }
 
@@ -41,7 +41,7 @@ registerLocale('ko', ko);
 function DatePicker(props: DatePickerProps) {
   const nameOnChange = (
     date: Date | null,
-    event: SyntheticEvent<HTMLInputElement> | undefined
+    event: SyntheticEvent<HTMLInputElement> | undefined,
   ) => {
     props.onChange(date, event, props.name);
   };
@@ -50,6 +50,10 @@ function DatePicker(props: DatePickerProps) {
     ? props.dateFormat
     : props.showMonthYearPicker
     ? 'yyyy-MM'
+    : props.showTimeInput || props.showTimeSelect
+    ? props.showTimeSelectOnly
+      ? 'HH:mm'
+      : 'yyyy-MM-dd HH:mm'
     : 'yyyy-MM-dd';
 
   return (
@@ -63,6 +67,7 @@ function DatePicker(props: DatePickerProps) {
         className="custom-date-picker"
         calendarClassName="custom-calendar"
         wrapperClassName="custom-wrapper"
+        timeClassName={(time) => 'custom-time-style'}
         renderCustomHeader={({
           date,
           prevMonthButtonDisabled,
@@ -86,7 +91,8 @@ function DatePicker(props: DatePickerProps) {
                   : prevMonthButtonDisabled
               }
               iconOnly
-              type="reset">
+              type="reset"
+            >
               <Icon icon="leftArrow" />
             </Button>
 
@@ -107,7 +113,8 @@ function DatePicker(props: DatePickerProps) {
                   : nextMonthButtonDisabled
               }
               iconOnly
-              type="reset">
+              type="reset"
+            >
               <Icon icon="rightArrow" />
             </Button>
           </CustomHeader>
@@ -265,6 +272,46 @@ const DatePickerContainer = styled.div`
         &:hover {
           background-color: #fff;
         }
+      }
+    }
+
+    /** time */
+    .react-datepicker__header {
+      background-color: #fff;
+    }
+
+    .react-datepicker__time-list {
+      li.react-datepicker__time-list-item--selected {
+        background-color: ${palette.gray[7]} !important;
+      }
+
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background-color: ${palette.gray[6]};
+      }
+
+      ::-webkit-scrollbar-button {
+        width: 0;
+        height: 0;
+      }
+    }
+
+    &.react-datepicker--time-only {
+      /* width: 12rem; */
+
+      .react-datepicker-time__input {
+        width: 7rem;
+      }
+
+      .custom-time-style {
       }
     }
   }
