@@ -251,8 +251,10 @@ export const useCustomHookSample = () => {
   });
 
   const [dateForm, onChangeDate, resetDate] = useChangeDate({
-    startDate: '',
-    endDate: '',
+    startDate: null,
+    endDate: null,
+    month: null,
+    time: null,
   });
 
   const [checkForm, onChangeCheck, resetCheck] = useChangeCheck({
@@ -270,7 +272,7 @@ export const useCustomHookSample = () => {
     radioValue2,
   } = inputForm;
 
-  const { startDate, endDate } = dateForm;
+  const { startDate, endDate, month, time } = dateForm;
   const { checkValue1, checkValue2 } = checkForm;
 
   /** 버튼 클릭시 values log 찍음 */
@@ -355,6 +357,24 @@ export const useCustomHookSample = () => {
           onChange={onChangeDate}
           name="endDate"
           width="30%"
+          showTimeSelect
+        />
+        <br />
+        <DatePicker
+          selected={month}
+          onChange={onChangeDate}
+          name="month"
+          width="30%"
+          showMonthYearPicker
+        />
+        <br />
+        <DatePicker
+          selected={time}
+          onChange={onChangeDate}
+          name="time"
+          width="30%"
+          showTimeSelect
+          showTimeSelectOnly
         />
         <br />
         <Check

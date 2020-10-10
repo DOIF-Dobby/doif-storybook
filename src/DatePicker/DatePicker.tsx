@@ -234,6 +234,11 @@ const DatePickerContainer = styled.div`
           background-color: #fff;
         }
       }
+
+      /** today */
+      .react-datepicker__day--today:not(.react-datepicker__day--selected) {
+        color: ${palette.blue[5]};
+      }
     }
 
     /** Month Picker */

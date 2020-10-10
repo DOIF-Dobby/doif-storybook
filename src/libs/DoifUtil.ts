@@ -7,9 +7,13 @@ import _ from 'lodash';
 const mapDateString = (dateObj: {
   [index: string]: Date | null;
 }): { [index: string]: string } => {
-  const stringObj = _.mapValues(dateObj, (o) =>
-    o ? moment(o).format('YYYY-MM-DD') : ''
-  );
+  const stringObj = _.mapValues(dateObj, (o) => {
+    if (!o) return '';
+
+    const format = o.getHours() === 0 ? 'YYYY-MM-DD' : 'YYYY-MM-DD HH:mm';
+
+    return moment(o).format(format);
+  });
 
   return stringObj;
 };
