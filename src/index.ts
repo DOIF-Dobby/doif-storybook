@@ -10,6 +10,7 @@ import Input from './Input/Input';
 import Select from './Select/Select';
 import Check from './Check/Check';
 import Radio from './Radio/Radio';
+import Tab from './Tab/Tab';
 
 // memoization 한 후에 export
 const MemoButton = memo(Button);
@@ -23,6 +24,7 @@ const MemoSelect = memo(Select);
 const MemoCheck = memo(Check);
 const MemoRadio = memo(Radio);
 const MemoDatePicker = memo(DatePicker);
+const MemoTab = memo(Tab);
 
 /** component */
 export { MemoButton as Button };
@@ -36,6 +38,7 @@ export { MemoSelect as Select };
 export { MemoCheck as Check };
 export { MemoRadio as Radio };
 export { MemoDatePicker as DatePicker };
+export { MemoTab as Tab };
 
 /** hook */
 export { default as useChange } from './hooks/useChange';
