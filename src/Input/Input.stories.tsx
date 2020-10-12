@@ -40,7 +40,7 @@ export const input = () => {
       Color.GREEN,
       Color.YELLOW,
     ],
-    Color.VIOLET
+    Color.VIOLET,
   );
 
   return (
@@ -208,6 +208,7 @@ export const inputWithIcon = () => {
         onChange={onChange}
         value={value}
         width="30%"
+        placeholder="input with Icon"
         label="input with Icon"
         icon={<Icon icon="downArrow" />}
       />
@@ -234,6 +235,7 @@ export const inputWithIcon = () => {
         onChange={onChange}
         value={value}
         width="30%"
+        placeholder="input with Icon"
         label="input with Icon"
         disabled
         icon={<Icon icon="downArrow" />}

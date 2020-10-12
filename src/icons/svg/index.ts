@@ -6,3 +6,4 @@ export { ReactComponent as downArrow } from './down-arrow.svg';
 export { ReactComponent as topArrow } from './top-arrow.svg';
 export { ReactComponent as leftArrow } from './left-arrow.svg';
 export { ReactComponent as rightArrow } from './right-arrow.svg';
+export { ReactComponent as check } from './check.svg';
