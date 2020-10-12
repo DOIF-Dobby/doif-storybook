@@ -210,7 +210,7 @@ export const sample = () => {
           onChange={onChange}
         />
         <br />
-        <Button>버튼</Button>
+        <Button type="submit">버튼</Button>
       </form>
     </div>
   );
@@ -407,13 +407,11 @@ export const useCustomHookSample = () => {
         />
         <br />
         <ButtonGroup>
-          <Button>버튼</Button>
-          <Button variant="text" onClick={onReset} type="reset">
+          <Button type="submit">버튼</Button>
+          <Button variant="text" onClick={onReset}>
             초기화
           </Button>
-          <Button variant="outline" type="reset">
-            그냥 버튼
-          </Button>
+          <Button variant="outline">그냥 버튼</Button>
         </ButtonGroup>
       </form>
     </div>

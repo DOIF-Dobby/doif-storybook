@@ -37,6 +37,7 @@ function Button(props: ButtonProps) {
   return (
     <StyledButton
       disabled={props.disabled || props.isLoading}
+      type="button"
       {...props}
       css={[
         style,
