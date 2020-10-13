@@ -92,8 +92,14 @@ const StyledButton = styled.button`
       case 'contain':
         return `
           background-color: ${palette[props.color][colorNumber]};
-          color: white;
           border: none;
+          & > span.contents-style {
+            color: #fff;
+
+            & > svg {
+              fill: #fff;
+            }
+          }
           &:hover:enabled {
             background-color: ${palette[props.color][colorNumber + 1]}};
             transition: all 0.15s;
@@ -113,8 +119,15 @@ const StyledButton = styled.button`
       case 'outline':
         return `
           background-color: transparent;
-          color: ${palette[props.color][colorNumber]};
           border: 1px solid ${palette[props.color][colorNumber]};
+          & > span.contents-style {
+            color: ${palette[props.color][colorNumber]};
+
+            & > svg {
+              fill: ${palette[props.color][colorNumber]};
+            }
+          }
+
           &:hover:enabled {
             background-color: ${palette[props.color][0]}};
             transition: all 0.15s;
@@ -129,8 +142,15 @@ const StyledButton = styled.button`
       case 'text':
         return `
           background-color: transparent;
-          color: ${palette[props.color][colorNumber]};
           border: none;
+          & > span.contents-style {
+            color: ${palette[props.color][colorNumber]};
+
+            & > svg {
+              fill: ${palette[props.color][colorNumber]};
+            }
+          }
+
           &:hover:enabled {
             color: ${palette[props.color][colorNumber + 1]}};
             transition: all 0.15s;

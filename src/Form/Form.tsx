@@ -25,7 +25,6 @@ const StyledForm = styled.form`
   /* border: 1.5px solid ${palette.gray[5]}; */
   border-radius: 4px;
 
-
   & > div.row + div.row {
     /* border-top: 1px solid ${palette.gray[5]}; */
     margin-top: 8px;

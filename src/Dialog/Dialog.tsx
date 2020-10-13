@@ -86,11 +86,6 @@ const fullscreen = css`
   height: 100%;
 `;
 
-const darkLayer = css`
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
-`;
-
 const whiteBoxWrapper = css`
   z-index: 1010;
   display: flex;
@@ -108,7 +103,7 @@ const whiteBox = css`
 
   h3 {
     font-size: 1.5rem;
-    color: ${palette.gray[7]};
+    /* color: ${palette.gray[7]}; */
     margin-top: 0;
     margin-bottom: 1rem;
   }
@@ -116,7 +111,7 @@ const whiteBox = css`
   p {
     font-size: 1.125rem;
     margin: 0;
-    color: ${palette.gray[7]};
+    /* color: ${palette.gray[7]}; */
   }
 `;
 

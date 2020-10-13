@@ -26,7 +26,8 @@ function Icon({ icon, color, size, className }: IconProps) {
   const SVGIcon = icons[icon];
   return (
     <SVGIcon
-      css={{ fill: color || 'currentColor', width: size, height: 'auto' }}
+      css={{ width: size, height: 'auto' }}
+      style={{ fill: color }}
       className={className}
     />
   );

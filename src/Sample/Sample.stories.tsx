@@ -13,7 +13,7 @@ import Row from '../Form/Row';
 import Column from '../Form/Column';
 import Label from '../Form/Label';
 import Field from '../Form/Field';
-import Dialog from '../Dialog/Dialog';
+import Modal from '../Modal/Modal';
 import Sample from './Sample';
 import useChange from '../hooks/useChange';
 import useChangeDate from '../hooks/useChangeDate';
@@ -546,11 +546,11 @@ export const DialogForm = () => {
 
   const [visible, setVisible] = useState(false);
 
-  const onDialogOpen = useCallback(() => {
+  const onModalOpen = useCallback(() => {
     setVisible(true);
   }, []);
 
-  const onDialogClose = useCallback(() => {
+  const onModalClose = useCallback(() => {
     setVisible(false);
   }, []);
 
@@ -567,7 +567,6 @@ export const DialogForm = () => {
 
   const [checkForm, onChangeCheck, resetCheck] = useChangeCheck({
     checkValue1: [],
-    checkValue2: [],
   });
 
   const { inputValue1, inputValue2, selectValue1, radioValue2 } = inputForm;
@@ -587,16 +586,10 @@ export const DialogForm = () => {
     [inputForm, dateForm, checkForm],
   );
 
-  const onReset = useCallback(() => {
-    resetInput();
-    resetDate();
-    resetCheck();
-  }, [resetInput, resetDate, resetCheck]);
-
   return (
     <div>
-      <Button onClick={onDialogOpen}>Dialog Open</Button>
-      <Dialog visible={visible} onConfirm={onDialogClose}>
+      <Button onClick={onModalOpen}>Dialog Open</Button>
+      <Modal visible={visible} title="가맹점 정보 등록">
         <div>
           <Form onSubmit={onSubmit}>
             <Row>
@@ -676,9 +669,17 @@ export const DialogForm = () => {
                 </Field>
               </Column>
             </Row>
+            <Row>
+              <ButtonGroup align="center">
+                <Button type="submit">확인</Button>
+                <Button variant="text" onClick={onModalClose}>
+                  닫기
+                </Button>
+              </ButtonGroup>
+            </Row>
           </Form>
         </div>
-      </Dialog>
+      </Modal>
     </div>
   );
 };

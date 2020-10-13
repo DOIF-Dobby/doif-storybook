@@ -34,7 +34,7 @@ Label.defaultProps = {
 };
 
 const StyledLabel = styled.div`
-  flex-basis: 10rem;
+  width: 10rem;
   /* background-color: ${palette.gray[1]}; */
   /* border-radius: 4px; */
   /* color: #fff; */
