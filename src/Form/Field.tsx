@@ -18,7 +18,7 @@ function Field(props: FieldProps) {
 
 const StyledField = styled.div`
   flex-basis: calc(100% - 10rem);
-  padding: 0.2rem 1rem 0.2rem 0.5rem;
+  /* padding: 0.2rem 1rem 0.2rem 0.5rem; */
 `;
 
 export default Field;

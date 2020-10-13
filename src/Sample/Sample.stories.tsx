@@ -8,6 +8,11 @@ import Input from '../Input/Input';
 import Radio from '../Radio/Radio';
 import Select from '../Select/Select';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
+import Form from '../Form/Form';
+import Row from '../Form/Row';
+import Column from '../Form/Column';
+import Label from '../Form/Label';
+import Field from '../Form/Field';
 import Sample from './Sample';
 import useChange from '../hooks/useChange';
 import useChangeDate from '../hooks/useChangeDate';
@@ -117,101 +122,146 @@ export const sample = () => {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <Select
-          data={data}
-          value={selectValue1}
-          defVal={defVal}
-          name="selectValue1"
-          variant="outline"
-          label="select1"
-          width="30%"
-          onChange={onChange}
-        />
-        <br />
-        <Select
-          data={data}
-          value={selectValue2}
-          defVal={defVal}
-          name="selectValue2"
-          variant="outline"
-          label="select2"
-          width="30%"
-          onChange={onChange}
-        />
-        <br />
-        <Input
-          value={inputValue1}
-          name="inputValue1"
-          variant="outline"
-          label="input1"
-          width="30%"
-          onChange={onChange}
-        />
-        <br />
-        <Input
-          value={inputValue2}
-          name="inputValue2"
-          variant="outline"
-          label="input2"
-          width="30%"
-          onChange={onChange}
-        />
-        <br />
-        <Input
-          value={inputValue3}
-          name="inputValue3"
-          variant="underline"
-          label="input3"
-          width="30%"
-          onChange={onChange}
-        />
-        <br />
-        <DatePicker
-          selected={startDate}
-          onChange={onChangeDate}
-          name="startDate"
-          width="30%"
-        />
-        <br />
-        <DatePicker
-          selected={endDate}
-          onChange={onChangeDate}
-          name="endDate"
-          width="30%"
-        />
-        <br />
-        <Check
-          data={data}
-          value={checkValue1}
-          name="checkValue1"
-          onChange={onChangeCheck}
-        />
-        <br />
-        <Check
-          data={data}
-          value={checkValue2}
-          name="checkValue2"
-          onChange={onChangeCheck}
-        />
-        <br />
-        <Radio
-          data={data}
-          value={radioValue1}
-          name="radioValue1"
-          onChange={onChange}
-        />
-        <br />
-        <Radio
-          data={data}
-          value={radioValue2}
-          name="radioValue2"
-          defVal={{ code: '', name: '선택없음' }}
-          onChange={onChange}
-        />
-        <br />
-        <Button type="submit">버튼</Button>
-      </form>
+      <Form onSubmit={onSubmit}>
+        <Row>
+          <Column>
+            <Label>Select 1</Label>
+            <Field>
+              <Select
+                data={data}
+                value={selectValue1}
+                defVal={defVal}
+                name="selectValue1"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+          <Column>
+            <Label>Select 2</Label>
+            <Field>
+              <Select
+                data={data}
+                value={selectValue2}
+                defVal={defVal}
+                name="selectValue2"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>Input 1</Label>
+            <Field>
+              <Input
+                value={inputValue1}
+                name="inputValue1"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+          <Column>
+            <Label>Input 2</Label>
+            <Field>
+              <Input
+                value={inputValue2}
+                name="inputValue2"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column width="50%">
+            <Label>Input 3</Label>
+            <Field>
+              <Input
+                value={inputValue3}
+                name="inputValue3"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>DatePicker 1</Label>
+            <Field>
+              <DatePicker
+                selected={startDate}
+                onChange={onChangeDate}
+                name="startDate"
+              />
+            </Field>
+          </Column>
+          <Column>
+            <Label>DatePicker 2</Label>
+            <Field>
+              <DatePicker
+                selected={endDate}
+                onChange={onChangeDate}
+                name="endDate"
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>Check 1</Label>
+            <Field>
+              <Check
+                data={data}
+                value={checkValue1}
+                name="checkValue1"
+                onChange={onChangeCheck}
+              />
+            </Field>
+          </Column>
+          <Column>
+            <Label>Check 2</Label>
+            <Field>
+              <Check
+                data={data}
+                value={checkValue2}
+                name="checkValue2"
+                onChange={onChangeCheck}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>Radio 1</Label>
+            <Field>
+              <Radio
+                data={data}
+                value={radioValue1}
+                name="radioValue1"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>Radio 2</Label>
+            <Field>
+              <Radio
+                data={data}
+                value={radioValue2}
+                name="radioValue2"
+                defVal={{ code: '', name: '선택없음' }}
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <ButtonGroup align="center">
+            <Button type="submit">버튼</Button>
+          </ButtonGroup>
+        </Row>
+      </Form>
     </div>
   );
 };
@@ -295,125 +345,176 @@ export const useCustomHookSample = () => {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <Select
-          data={data}
-          value={selectValue1}
-          defVal={defVal}
-          name="selectValue1"
-          variant="outline"
-          label="select1"
-          width="30%"
-          onChange={onChange}
-        />
-        <br />
-        <Select
-          data={data}
-          value={selectValue2}
-          defVal={defVal}
-          name="selectValue2"
-          variant="outline"
-          label="select2"
-          width="30%"
-          onChange={onChange}
-        />
-        <br />
-        <Input
-          value={inputValue1}
-          name="inputValue1"
-          variant="outline"
-          label="input1"
-          width="30%"
-          onChange={onChange}
-        />
-        <br />
-        <Input
-          value={inputValue2}
-          name="inputValue2"
-          variant="outline"
-          label="input2"
-          width="30%"
-          onChange={onChange}
-        />
-        <br />
-        <Input
-          value={inputValue3}
-          name="inputValue3"
-          variant="underline"
-          label="input3"
-          width="30%"
-          onChange={onChange}
-        />
-        <br />
-        <DatePicker
-          selected={startDate}
-          onChange={onChangeDate}
-          name="startDate"
-          width="30%"
-        />
-        <br />
-        <DatePicker
-          selected={endDate}
-          onChange={onChangeDate}
-          name="endDate"
-          width="30%"
-          showTimeSelect
-        />
-        <br />
-        <DatePicker
-          selected={month}
-          onChange={onChangeDate}
-          name="month"
-          width="30%"
-          showMonthYearPicker
-        />
-        <br />
-        <DatePicker
-          selected={time}
-          onChange={onChangeDate}
-          name="time"
-          width="30%"
-          showTimeSelect
-          showTimeSelectOnly
-        />
-        <br />
-        <Check
-          data={data}
-          value={checkValue1}
-          name="checkValue1"
-          onChange={onChangeCheck}
-        />
-        <br />
-        <Check
-          data={data}
-          value={checkValue2}
-          name="checkValue2"
-          onChange={onChangeCheck}
-        />
-        <br />
-        <Radio
-          data={data}
-          value={radioValue1}
-          name="radioValue1"
-          onChange={onChange}
-        />
-        <br />
-        <Radio
-          data={data}
-          value={radioValue2}
-          name="radioValue2"
-          defVal={{ code: '', name: '선택없음' }}
-          onChange={onChange}
-        />
-        <br />
-        <ButtonGroup>
-          <Button type="submit">버튼</Button>
-          <Button variant="text" onClick={onReset}>
-            초기화
-          </Button>
-          <Button variant="outline">그냥 버튼</Button>
-        </ButtonGroup>
-      </form>
+      <Form onSubmit={onSubmit}>
+        <Row>
+          <Column>
+            <Label>Select 1</Label>
+            <Field>
+              <Select
+                data={data}
+                value={selectValue1}
+                defVal={defVal}
+                name="selectValue1"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+          <Column>
+            <Label>Select 2</Label>
+            <Field>
+              <Select
+                data={data}
+                value={selectValue2}
+                defVal={defVal}
+                name="selectValue2"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>Input 1</Label>
+            <Field>
+              <Input
+                value={inputValue1}
+                name="inputValue1"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+          <Column>
+            <Label>Input 2</Label>
+            <Field>
+              <Input
+                value={inputValue2}
+                name="inputValue2"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column width="50%">
+            <Label>Input 3</Label>
+            <Field>
+              <Input
+                value={inputValue3}
+                name="inputValue3"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>DatePicker 1</Label>
+            <Field>
+              <DatePicker
+                selected={startDate}
+                onChange={onChangeDate}
+                name="startDate"
+              />
+            </Field>
+          </Column>
+          <Column>
+            <Label>DatePicker 2</Label>
+            <Field>
+              <DatePicker
+                selected={endDate}
+                onChange={onChangeDate}
+                name="endDate"
+                showTimeSelect
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>MonthPicker</Label>
+            <Field>
+              <DatePicker
+                selected={month}
+                onChange={onChangeDate}
+                name="month"
+                showMonthYearPicker
+              />
+            </Field>
+          </Column>
+          <Column>
+            <Label>MonthPicker</Label>
+            <Field>
+              <DatePicker
+                selected={time}
+                onChange={onChangeDate}
+                name="time"
+                showTimeSelect
+                showTimeSelectOnly
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>Check 1</Label>
+            <Field>
+              <Check
+                data={data}
+                value={checkValue1}
+                name="checkValue1"
+                onChange={onChangeCheck}
+              />
+            </Field>
+          </Column>
+          <Column>
+            <Label>Check 2</Label>
+            <Field>
+              <Check
+                data={data}
+                value={checkValue2}
+                name="checkValue2"
+                onChange={onChangeCheck}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>Radio 1</Label>
+            <Field>
+              <Radio
+                data={data}
+                value={radioValue1}
+                name="radioValue1"
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Label>Radio 2</Label>
+            <Field>
+              <Radio
+                data={data}
+                value={radioValue2}
+                name="radioValue2"
+                defVal={{ code: '', name: '선택없음' }}
+                onChange={onChange}
+              />
+            </Field>
+          </Column>
+        </Row>
+        <Row>
+          <ButtonGroup align="center">
+            <Button type="submit">버튼</Button>
+            <Button variant="text" onClick={onReset}>
+              초기화
+            </Button>
+            <Button variant="outline">그냥 버튼</Button>
+          </ButtonGroup>
+        </Row>
+      </Form>
     </div>
   );
 };

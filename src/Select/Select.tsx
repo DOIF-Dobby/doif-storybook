@@ -23,7 +23,7 @@ interface SelectProps
   variant: 'basic' | 'underline' | 'outline';
   /** select box의 값을 설정합니다. */
   value: string;
-  /** label을 설정합니다. `variant`가 `underline`이나 `outline`일 경우 필수로 넣어야합니다.*/
+  /** label을 설정합니다. */
   label?: string;
   /** select box의 색을 정합니다. */
   color: Color;
@@ -96,14 +96,14 @@ function Select(props: SelectProps) {
         selectRef.current.dispatchEvent(new Event('change', { bubbles: true }));
       }
     },
-    []
+    [],
   );
 
   const onDebounceChangeData = _.debounce((target: HTMLInputElement) => {
     setData(
       data.filter((d) =>
-        d.name.toUpperCase().includes(target.value.toUpperCase())
-      )
+        d.name.toUpperCase().includes(target.value.toUpperCase()),
+      ),
     );
   }, 200);
 

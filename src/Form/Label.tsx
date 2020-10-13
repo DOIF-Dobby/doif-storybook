@@ -35,14 +35,14 @@ Label.defaultProps = {
 
 const StyledLabel = styled.div`
   flex-basis: 10rem;
-  background-color: ${palette.gray[1]};
+  /* background-color: ${palette.gray[1]}; */
   /* border-radius: 4px; */
   /* color: #fff; */
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 1px solid ${palette.gray[5]};
+  /* border-right: 1px solid ${palette.gray[5]}; */
 
   & > div {
     display: flex;

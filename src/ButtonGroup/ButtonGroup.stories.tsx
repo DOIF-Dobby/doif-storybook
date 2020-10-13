@@ -1,5 +1,11 @@
 import React from 'react';
-import { withKnobs, text, radios, boolean } from '@storybook/addon-knobs';
+import {
+  withKnobs,
+  text,
+  radios,
+  boolean,
+  select,
+} from '@storybook/addon-knobs';
 import ButtonGroup from './ButtonGroup';
 import Button from '../Button/Button';
 import Color from '../styles/colors/Color';
@@ -14,13 +20,13 @@ export const buttonGroup = () => {
   const direction = radios(
     'directoin',
     { Row: 'row', Column: 'column' },
-    'row'
+    'row',
   );
-  const rightAlign = boolean('rightAlign', false);
+  const align = select('align', ['left', 'center', 'right'], 'left');
   const gap = text('gap', '0.5rem');
 
   return (
-    <ButtonGroup direction={direction} rightAlign={rightAlign} gap={gap}>
+    <ButtonGroup direction={direction} align={align} gap={gap}>
       <Button variant="text">취소</Button>
       <Button>확인</Button>
     </ButtonGroup>
@@ -31,12 +37,18 @@ buttonGroup.story = {
   name: 'Default',
 };
 
-export const rightAlign = () => {
+export const align = () => {
   return (
-    <ButtonGroup rightAlign>
-      <Button>조회</Button>
-      <Button variant="outline">다운로드</Button>
-    </ButtonGroup>
+    <div>
+      <ButtonGroup align="right">
+        <Button>조회</Button>
+        <Button variant="outline">다운로드</Button>
+      </ButtonGroup>
+      <ButtonGroup align="center">
+        <Button>확인</Button>
+        <Button variant="outline">닫기</Button>
+      </ButtonGroup>
+    </div>
   );
 };
 

@@ -29,6 +29,7 @@ function Row(props: RowProps) {
 
 const StyledRow = styled.div`
   display: flex;
+  min-height: 2.5rem;
 
   & > div.column {
     flex-basis: ${(props: StyledRowProps) => props.flexBasis};
@@ -36,7 +37,7 @@ const StyledRow = styled.div`
 
   & > div.column + div.column {
     div.label {
-      border-left: 1px solid ${palette.gray[5]};
+      /* border-left: 1px solid ${palette.gray[5]}; */
     }
   }
 `;
