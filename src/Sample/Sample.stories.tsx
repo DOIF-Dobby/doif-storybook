@@ -13,6 +13,7 @@ import Row from '../Form/Row';
 import Column from '../Form/Column';
 import Label from '../Form/Label';
 import Field from '../Form/Field';
+import Dialog from '../Dialog/Dialog';
 import Sample from './Sample';
 import useChange from '../hooks/useChange';
 import useChangeDate from '../hooks/useChangeDate';
@@ -515,6 +516,169 @@ export const useCustomHookSample = () => {
           </ButtonGroup>
         </Row>
       </Form>
+    </div>
+  );
+};
+
+/**
+ * Dialog 안에 Form
+ */
+export const DialogForm = () => {
+  const data = [
+    {
+      code: 'CODE_01',
+      name: 'code01',
+    },
+    {
+      code: 'CODE_02',
+      name: 'code02',
+    },
+    {
+      code: 'CODE_03',
+      name: 'code03',
+    },
+  ];
+
+  const defVal = {
+    code: '',
+    name: '선택없음',
+  };
+
+  const [visible, setVisible] = useState(false);
+
+  const onDialogOpen = useCallback(() => {
+    setVisible(true);
+  }, []);
+
+  const onDialogClose = useCallback(() => {
+    setVisible(false);
+  }, []);
+
+  const [inputForm, onChange, resetInput] = useChange({
+    inputValue1: '',
+    inputValue2: '',
+    selectValue1: '',
+    radioValue2: '',
+  });
+
+  const [dateForm, onChangeDate, resetDate] = useChangeDate({
+    startDate: null,
+  });
+
+  const [checkForm, onChangeCheck, resetCheck] = useChangeCheck({
+    checkValue1: [],
+    checkValue2: [],
+  });
+
+  const { inputValue1, inputValue2, selectValue1, radioValue2 } = inputForm;
+
+  const { startDate } = dateForm;
+  const { checkValue1 } = checkForm;
+
+  /** 버튼 클릭시 values log 찍음 */
+  const onSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      const transDateForm = DoifUtil.mapDateString(dateForm);
+
+      console.log({ ...inputForm, ...transDateForm, ...checkForm });
+    },
+    [inputForm, dateForm, checkForm],
+  );
+
+  const onReset = useCallback(() => {
+    resetInput();
+    resetDate();
+    resetCheck();
+  }, [resetInput, resetDate, resetCheck]);
+
+  return (
+    <div>
+      <Button onClick={onDialogOpen}>Dialog Open</Button>
+      <Dialog visible={visible} onConfirm={onDialogClose}>
+        <div>
+          <Form onSubmit={onSubmit}>
+            <Row>
+              <Column>
+                <Label>Select 1</Label>
+                <Field>
+                  <Select
+                    data={data}
+                    value={selectValue1}
+                    defVal={defVal}
+                    name="selectValue1"
+                    onChange={onChange}
+                  />
+                </Field>
+              </Column>
+            </Row>
+            <Row>
+              <Column>
+                <Label>Input 1</Label>
+                <Field>
+                  <Input
+                    value={inputValue1}
+                    name="inputValue1"
+                    onChange={onChange}
+                  />
+                </Field>
+              </Column>
+            </Row>
+            <Row>
+              <Column>
+                <Label>Input 3</Label>
+                <Field>
+                  <Input
+                    value={inputValue2}
+                    name="inputValue2"
+                    onChange={onChange}
+                  />
+                </Field>
+              </Column>
+            </Row>
+            <Row>
+              <Column>
+                <Label>DatePicker 1</Label>
+                <Field>
+                  <DatePicker
+                    selected={startDate}
+                    onChange={onChangeDate}
+                    name="startDate"
+                  />
+                </Field>
+              </Column>
+            </Row>
+            <Row>
+              <Column>
+                <Label>Check 1</Label>
+                <Field>
+                  <Check
+                    data={data}
+                    value={checkValue1}
+                    name="checkValue1"
+                    onChange={onChangeCheck}
+                  />
+                </Field>
+              </Column>
+            </Row>
+            <Row>
+              <Column>
+                <Label>Radio 2</Label>
+                <Field>
+                  <Radio
+                    data={data}
+                    value={radioValue2}
+                    name="radioValue2"
+                    defVal={{ code: '', name: '선택없음' }}
+                    onChange={onChange}
+                  />
+                </Field>
+              </Column>
+            </Row>
+          </Form>
+        </div>
+      </Dialog>
     </div>
   );
 };
