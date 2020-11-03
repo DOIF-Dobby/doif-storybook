@@ -11,6 +11,13 @@ npm:
 yarn:
 `yarn add doif-react-uikit`
 
+## Required Module
+
+- react
+- react-dom
+- @emotion/core
+- @emotion/styled
+
 ## Reference
 
 You can find out how to use this module here.

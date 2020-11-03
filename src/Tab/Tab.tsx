@@ -123,6 +123,11 @@ const StyledTab = styled.div`
       &.selected {
         color: ${(props: StyledTabProps) => palette[props.color][props.number]};
         font-weight: 600;
+
+        & > span {
+          color: ${(props: StyledTabProps) =>
+            palette[props.color][props.number]};
+        }
       }
 
       & > input[type='radio'] {

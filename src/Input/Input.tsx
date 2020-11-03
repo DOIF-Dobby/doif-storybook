@@ -12,7 +12,7 @@ export interface InputProps
   > {
   /** input의 모양을 설정합니다. */
   variant: 'basic' | 'underline' | 'outline';
-  /** label을 설정합니다. `variant`가 `underline`이나 `outline`일 경우 필수로 넣어야합니다.*/
+  /** label을 설정합니다. */
   label?: string;
   /** input의 색을 정합니다. */
   color: Color;

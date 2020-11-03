@@ -91,7 +91,6 @@ function DatePicker(props: DatePickerProps) {
                   : prevMonthButtonDisabled
               }
               iconOnly
-              type="reset"
             >
               <Icon icon="leftArrow" />
             </Button>
@@ -113,7 +112,6 @@ function DatePicker(props: DatePickerProps) {
                   : nextMonthButtonDisabled
               }
               iconOnly
-              type="reset"
             >
               <Icon icon="rightArrow" />
             </Button>
