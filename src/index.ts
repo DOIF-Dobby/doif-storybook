@@ -16,6 +16,7 @@ import Row from './Form/Row';
 import Column from './Form/Column';
 import Label from './Form/Label';
 import Field from './Form/Field';
+import Modal from './Modal/Modal';
 
 // memoization 한 후에 export
 const MemoButton = memo(Button);
@@ -35,6 +36,7 @@ const MemoRow = memo(Row);
 const MemoColumn = memo(Column);
 const MemoLabel = memo(Label);
 const MemoField = memo(Field);
+const MemoModal = memo(Modal);
 
 /** component */
 export { MemoButton as Button };
@@ -54,6 +56,7 @@ export { MemoRow as Row };
 export { MemoColumn as Column };
 export { MemoLabel as Label };
 export { MemoField as Field };
+export { MemoModal as Modal };
 
 /** hook */
 export { default as useChange } from './hooks/useChange';
